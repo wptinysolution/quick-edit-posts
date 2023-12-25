@@ -128,7 +128,7 @@ if ( ! class_exists( PQE::class ) ) {
 	}
 
 	/**
-	 * @return Cptint
+	 * @return PQE
 	 */
 	function pqe() {
 		return PQE::instance();
