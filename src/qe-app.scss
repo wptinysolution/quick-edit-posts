@@ -1,0 +1,13 @@
+.edit-button{
+	padding: 10px;
+	position: relative;
+	z-index: 999;
+	background: #689cc7;
+	color: #fff;
+	border: navajowhite;
+	border-radius: 5px;
+	cursor: pointer;
+	&:hover{
+		background: #2271b1;
+	}
+}

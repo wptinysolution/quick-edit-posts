@@ -101,10 +101,12 @@ if (
 		 * JS
 		 */
 		mix
-			// Backend JS
+            // Backend JS.
 			.js( "src/admin-settings.jsx", "assets/js/backend/" )
 			.react()
+            .js( "src/qe-app.js", "assets/js/backend/" )
 			// Backend CSS
+            .sass( 'src/qe-app.scss', 'assets/css/backend/' )
 			.sass( 'src/admin-settings.scss', 'assets/css/backend/' ).sourceMaps( true, 'source-map' );
 	} else {
 		/**
@@ -112,13 +114,15 @@ if (
 		 */
 		mix
 			// Backend JS
-			.js( "src/admin-settings.jsx", "assets/backend/" )
+            .js( "src/qe-app.js", "assets/js/backend/" )
+			.js( "src/admin-settings.jsx", "assets/js/backend/" )
 			.react();
 		/**
 		 * CSS
 		 */
 		mix
 			// Backend CSS
+            .sass( 'src/qe-app.scss', 'assets/css/backend/' )
 			.sass( 'src/admin-settings.scss', 'assets/css/backend/' );
 	}
 

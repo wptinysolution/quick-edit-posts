@@ -26,8 +26,26 @@ class FilterHooks {
 		// add_filter( 'plugin_action_links_' . PQE_BASENAME, [ __CLASS__, 'plugins_setting_links' ] );
 		*/
 		add_filter( 'plugin_row_meta', [ __CLASS__, 'plugin_row_meta' ], 10, 2 );
+		add_filter( 'manage_edit-product_columns', [ __CLASS__,  'custom_product_list_columns' ] );
 	}
-
+	/**
+	 * Column Button.
+	 *
+	 * @param array $columns column name.
+	 * @return mixed
+	 */
+	public static function custom_product_list_columns( $columns ) {
+		// Find the position of the 'sku' column.
+		$sku_position = array_search( 'sku', array_keys( $columns ), true );
+		// Insert the new column after 'sku'.
+		return array_merge(
+			array_slice( $columns, 0, $sku_position ),
+			[
+				'qe_column' => esc_html__( 'Quick Edit', 'pqe' ),
+			],
+			array_slice( $columns, $sku_position )
+		);
+	}
 	/**
 	 * @param array $links default plugin action link.
 	 *
@@ -52,7 +70,7 @@ class FilterHooks {
 	public static function plugin_row_meta( $links, $file ) {
 		if ( PQE_BASENAME === $file ) {
 			$report_url         = 'https://www.wptinysolutions.com/contact';
-			$row_meta['issues'] = sprintf( '%2$s <a target="_blank" href="%1$s">%3$s</a>', esc_url( $report_url ), esc_html__( 'Facing issue?', 'tsmlt-media-tools' ), '<span style="color: red">' . esc_html__( 'Please open a support ticket.', 'tsmlt-media-tools' ) . '</span>' );
+			$row_meta['issues'] = sprintf( '%2$s <a target="_blank" href="%1$s">%3$s</a>', esc_url( $report_url ), esc_html__( 'Facing issue?', 'pqe' ), '<span style="color: red">' . esc_html__( 'Please open a support ticket.', 'pqe' ) . '</span>' );
 			return array_merge( $links, $row_meta );
 		}
 		return (array) $links;
