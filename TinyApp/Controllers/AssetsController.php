@@ -85,12 +85,14 @@ class AssetsController {
 			wp_register_style( $style['handle'], $style['src'], '', $this->version );
 		}
 
-		if ( 'edit.php' === $pagenow && 'product' === ( $_GET['post_type'] ?? '' ) ) {
+		if (
+			'edit.php' === $pagenow && 'product' === ( $_GET['post_type'] ?? '' ) ||
+			'product' === get_post_type( $_GET['post'] ?? '' )
+		) {
 			// Enqueue the script only on the WooCommerce product list table page.
 			wp_enqueue_style( 'qe-app' );
 			wp_enqueue_script( 'qe-app' );
 		}
-
 		$current_screen = get_current_screen();
 		if ( isset( $current_screen->id ) && 'toplevel_page_pqe-admin' === $current_screen->id ) {
 			wp_enqueue_style( 'pqe-settings' );

@@ -27,6 +27,15 @@ class FilterHooks {
 		*/
 		add_filter( 'plugin_row_meta', [ __CLASS__, 'plugin_row_meta' ], 10, 2 );
 		add_filter( 'manage_edit-product_columns', [ __CLASS__,  'custom_product_list_columns' ] );
+		add_filter( 'admin_body_class', [ __CLASS__, 'custom_class' ], 99 );
+	}
+	
+	
+	public static function custom_class( $classes ) {
+		if ( 'open_window' === ( $_GET['window'] ?? '' ) ) {
+			$classes .= ' pqe-window-opened opacity-0';
+		}
+		return $classes;
 	}
 	/**
 	 * Column Button.

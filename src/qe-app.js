@@ -4,7 +4,7 @@
         $('#wpbody').on('click', '.edit-button', function (event) {
             event.preventDefault();
             // Get the URL from the 'data-url' attribute.
-            var url = $(this).data('url') + '&window=openedwindow';
+            var url = $(this).data('url') + '&window=open_window';
             // Create a new popup window
             var popupWindow = window.open( url, '_blank', 'width=1000,height=600' );
             setTimeout(function () {
@@ -17,10 +17,9 @@
                 });
                 form = '<form name="post" action="post.php" method="post" id="post"> ' + form + ' </form>';
                 $(popupWindow.document.body).find('#wpbody-content').html(form);
+                $(popupWindow.document.body).removeClass('opacity-0');
                 popupWindow.document.close();
             }, 1000); // You can adjust the delay time as needed
-
-
         });
     });
 

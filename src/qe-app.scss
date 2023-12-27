@@ -11,3 +11,10 @@
 		background: #2271b1;
 	}
 }
+
+.pqe-window-opened{
+	&.opacity-0{
+		opacity: 0;
+		visibility: hidden;
+	}
+}
