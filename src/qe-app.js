@@ -17,19 +17,23 @@
                 success: function (data) {
                     // Remove the content of the adminmenuwrap section
                     // var data = $(data).find('#adminmenuwrap').remove();
-
                     // Write the remaining content into the popup window document
                     popupWindow.document.write(data);
                     // Add a load event listener to the popup window's document
-                    // setTimeout(function () {
-                    //
-                    //     console.log( 'Hello' );
-                    //     // Remove the content of the adminmenuwrap section
-                    //     popupWindow.document.body.find('#adminmenuwrap').remove();
-                    //     // Close the document to finish writing
-                    //     popupWindow.document.close();
-                    // }, 1000); // You can adjust the delay time as needed
+                },
+                complete: function (jqXHR, textStatus) {
+                    setTimeout(function () {
+                        var form = $(popupWindow.document.body).find('#post').html();
+                        $(popupWindow.document.body).find('#adminmenumain').remove();
 
+                        $(popupWindow.document.body).find('#woocommerce-embedded-root').remove();
+                        $(popupWindow.document.body).find('#wpcontent').css({
+                            margin: 0,
+                        });
+                        form = '<form name="post" action="post.php" method="post" id="post"> ' + form + ' </form>';
+                        $(popupWindow.document.body).find('#wpbody-content').html(form);
+                        popupWindow.document.close();
+                    }, 1000); // You can adjust the delay time as needed
                 }
             });
         });
