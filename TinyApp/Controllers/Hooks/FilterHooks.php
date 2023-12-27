@@ -28,9 +28,42 @@ class FilterHooks {
 		add_filter( 'plugin_row_meta', [ __CLASS__, 'plugin_row_meta' ], 10, 2 );
 		add_filter( 'manage_edit-product_columns', [ __CLASS__,  'custom_product_list_columns' ] );
 		add_filter( 'admin_body_class', [ __CLASS__, 'custom_class' ], 99 );
+		add_action( 'get_edit_post_link', [ __CLASS__, 'redirect_after_edit_product' ], 20, 3 );
 	}
-	
-	
+
+	/**
+	 * @param $post_id
+	 * @param $post
+	 * @param $update
+	 * @return void
+	 */
+	public static function redirect_after_edit_product( $link, $post_ID, $context ) {
+		$is_product = ! empty( $_POST['_wp_http_referer'] ) && 'product' === ( $_POST['post_type'] ?? '' );
+		if ( ! $is_product ) {
+			return $link;
+		}
+		$parametersArray = explode( '&', $_POST['_wp_http_referer'] );
+		// Initialize a variable to store the window value.
+		$windowValue = null;
+		// Iterate through the array to find the "window" parameter.
+		foreach ( $parametersArray as $parameter ) {
+			// Split each parameter into key and value using "=" as the delimiter.
+			list($key, $value) = explode( '=', $parameter );
+			// Check if the current key is "window".
+			if ( 'window' === $key ) {
+				$windowValue = $value;
+				break; // Stop iterating once the "window" parameter is found.
+			}
+		}
+		if ( $windowValue ) {
+			$link .= '&window=open_window';
+		}
+		return $link;
+	}
+	/**
+	 * @param $classes
+	 * @return mixed|string
+	 */
 	public static function custom_class( $classes ) {
 		if ( 'open_window' === ( $_GET['window'] ?? '' ) ) {
 			$classes .= ' pqe-window-opened opacity-0';
