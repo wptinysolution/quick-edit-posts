@@ -6,6 +6,8 @@
             if( isWindowOpen ) {
                 $(document.body).find('#adminmenumain').remove();
                 $(document.body).find('#woocommerce-embedded-root').remove();
+                $(popupWindow.document.body).find('.wp-heading-inline, .page-title-action').remove();
+
                 $(document.body).find('#wpcontent').css({
                     margin: 0,
                 });
@@ -31,14 +33,13 @@
                 // Create a new popup window
                 popupWindow = window.open( url, '_blank', 'width=1000,height=600' );
                 setTimeout(function () {
-                    var form = $(popupWindow.document.body).find('#post').html();
                     $(popupWindow.document.body).find('#adminmenumain').remove();
                     $(popupWindow.document.body).find('#woocommerce-embedded-root').remove();
+                    $(popupWindow.document.body).find('.wp-heading-inline, .page-title-action').remove();
+
                     $(popupWindow.document.body).find('#wpcontent').css({
                         margin: 0,
                     });
-                    form = '<form name="post" action="post.php" method="post" id="post"> ' + form + ' </form>';
-                    //$(popupWindow.document.body).find('div.wrap').html(form);
                     $(document.body).find('#wpbody').css({
                         margin: 0,
                     });
