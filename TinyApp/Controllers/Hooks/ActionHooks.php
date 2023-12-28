@@ -38,9 +38,8 @@ class ActionHooks {
 				class="edit-button"
 				type="button"
 				data-url="<?php echo esc_url( admin_url( $url ) ); ?>"
-				style="padding: 10px; position: relative; z-index: 999;"
 			>
-				EDIT
+                Edit
 			</button>
 			<?php
 		}

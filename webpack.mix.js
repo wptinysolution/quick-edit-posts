@@ -26,14 +26,14 @@ if (process.env.npm_config_package) {
 			const copyTo = path.resolve( `${temDirectory} / ${package_slug}` );
 			// Select All file then paste on list
 			let includes = [
-			"app",
-			"assets",
-			"languages",
-			"vendor",
-			"index.php",
-			"README.txt",
-			"uninstall.php",
-			`${package_slug}.php`,
+                "assets",
+                "languages",
+                "TinyApp",
+			    "vendor",
+			    "index.php",
+			    "README.txt",
+                "changelog.txt",
+			    `${package_slug}.php`,
 			];
 			fs.ensureDir(
 				copyTo,
