@@ -4,15 +4,14 @@
         setTimeout(function () {
             const isWindowOpen = window.location.search.includes('window=open_window');
             if( isWindowOpen ) {
-                var form = $(document.body).find('#post').html();
                 $(document.body).find('#adminmenumain').remove();
-
                 $(document.body).find('#woocommerce-embedded-root').remove();
                 $(document.body).find('#wpcontent').css({
                     margin: 0,
                 });
-                form = '<form name="post" action="post.php" method="post" id="post"> ' + form + ' </form>';
-                $(document.body).find('#wpbody-content').html(form);
+                $(document.body).find('#wpbody').css({
+                    margin: 0,
+                });
                 $(document.body).removeClass('opacity-0');
             }
         }, 1000); // You can adjust the delay time as needed
@@ -32,15 +31,14 @@
                 // Create a new popup window
                 popupWindow = window.open( url, '_blank', 'width=1000,height=600' );
                 setTimeout(function () {
-                    var form = $(popupWindow.document.body).find('#post').html();
                     $(popupWindow.document.body).find('#adminmenumain').remove();
-
                     $(popupWindow.document.body).find('#woocommerce-embedded-root').remove();
                     $(popupWindow.document.body).find('#wpcontent').css({
                         margin: 0,
                     });
-                    form = '<form name="post" action="post.php" method="post" id="post"> ' + form + ' </form>';
-                    $(popupWindow.document.body).find('#wpbody-content').html(form);
+                    $(document.body).find('#wpbody').css({
+                        margin: 0,
+                    });
                     $(popupWindow.document.body).removeClass('opacity-0');
                     popupWindow.document.close();
                 }, 1000); // You can adjust the delay time as needed
