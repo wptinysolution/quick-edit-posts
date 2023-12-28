@@ -28,21 +28,24 @@ class FilterHooks {
 		add_filter( 'plugin_row_meta', [ __CLASS__, 'plugin_row_meta' ], 10, 2 );
 		add_filter( 'manage_edit-product_columns', [ __CLASS__,  'custom_product_list_columns' ] );
 		add_filter( 'admin_body_class', [ __CLASS__, 'custom_class' ], 99 );
-		add_action( 'get_edit_post_link', [ __CLASS__, 'redirect_after_edit_product' ], 20, 3 );
+		add_action( 'get_edit_post_link', [ __CLASS__, 'redirect_after_edit_product' ], 20 );
 	}
 
 	/**
-	 * @param $post_id
-	 * @param $post
-	 * @param $update
-	 * @return void
+	 * Redirect after edit
+	 *
+	 * @param string $link url.
+	 * @return mixed|string
 	 */
-	public static function redirect_after_edit_product( $link, $post_ID, $context ) {
-		$is_product = ! empty( $_POST['_wp_http_referer'] ) && 'product' === ( $_POST['post_type'] ?? '' );
+	public static function redirect_after_edit_product( $link ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$is_product = ! empty( $_POST['_wp_http_referer'] ) && 'product' === sanitize_text_field( wp_unslash( $_POST['post_type'] ?? '' ) );
 		if ( ! $is_product ) {
 			return $link;
 		}
-		$parametersArray = explode( '&', $_POST['_wp_http_referer'] );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$parametersArray = explode( '&', sanitize_text_field( wp_unslash( $_POST['_wp_http_referer'] ) ) );
 		// Initialize a variable to store the window value.
 		$windowValue = null;
 		// Iterate through the array to find the "window" parameter.
@@ -61,11 +64,14 @@ class FilterHooks {
 		return $link;
 	}
 	/**
-	 * @param $classes
+	 * Body class.
+	 *
+	 * @param string $classes class.
 	 * @return mixed|string
 	 */
 	public static function custom_class( $classes ) {
-		if ( 'open_window' === ( $_GET['window'] ?? '' ) ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( 'open_window' === sanitize_text_field( wp_unslash( $_GET['window'] ?? '' ) ) ) {
 			$classes .= ' pqe-window-opened opacity-0';
 		}
 		return $classes;

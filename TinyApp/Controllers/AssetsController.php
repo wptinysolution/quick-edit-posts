@@ -50,7 +50,7 @@ class AssetsController {
 	 *
 	 * @return void
 	 */
-	public function backend_assets( $hook ) {
+	public function backend_assets() {
 		// Check if we are on the WooCommerce product list table page.
 		global $pagenow;
 		$scripts = [
@@ -84,10 +84,10 @@ class AssetsController {
 		foreach ( $styles as $style ) {
 			wp_register_style( $style['handle'], $style['src'], '', $this->version );
 		}
-
+		
 		if (
-			'edit.php' === $pagenow && 'product' === ( $_GET['post_type'] ?? '' ) ||
-			'product' === get_post_type( $_GET['post'] ?? '' )
+			'edit.php' === $pagenow && 'product' === sanitize_text_field( wp_unslash( $_GET['post_type'] ?? '' ) ) ||
+			'product' === get_post_type( absint( $_GET['post'] ?? 0 ) )
 		) {
 			// Enqueue the script only on the WooCommerce product list table page.
 			wp_enqueue_style( 'qe-app' );

@@ -26,7 +26,7 @@ class AdminMenu {
 	 * @return void
 	 */
 	private function __construct() {
-		add_action( 'admin_menu', [ $this, 'register_sub_menu' ] );
+		// add_action( 'admin_menu', [ $this, 'register_sub_menu' ] );
 	}
 
 	/**

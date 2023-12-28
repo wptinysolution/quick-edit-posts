@@ -1,6 +1,6 @@
 <?php
 /**
- *
+ * Singleton trait
  */
 
 namespace TinySolutions\pqe\Traits;
@@ -10,6 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
 }
 
+/**
+ * Singleton
+ */
 trait SingletonTrait {
 	/**
 	 * The single instance of the class.
@@ -19,6 +22,8 @@ trait SingletonTrait {
 	protected static $instance = null;
 
 	/**
+	 * Instance
+	 *
 	 * @return self
 	 */
 	final public static function instance() {
@@ -29,19 +34,19 @@ trait SingletonTrait {
 		return self::$instance;
 	}
 
-
 	/**
 	 * Prevent cloning.
 	 */
 	final public function __clone() {
 	}
 
-	// Prevent serialization of the instance
+	/**
+	 * Sleep.
+	 */
 	public function __sleep() {
 		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'pqe' ), '1.0' );
 		die();
 	}
-
 
 	/**
 	 * Prevent unserializing.

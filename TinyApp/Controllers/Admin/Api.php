@@ -16,7 +16,7 @@ class Api {
 	/**
 	 * @var string
 	 */
-	private $namespacev1     = 'TinySolutions/pqe/v1';
+	private $namespacev1 = 'TinySolutions/pqe/v1';
 	/**
 	 * @var string
 	 */
@@ -30,19 +30,28 @@ class Api {
 
 	/**
 	 * Register our routes.
+	 *
 	 * @return void
 	 */
 	public function register_routes() {
-		register_rest_route( $this->namespacev1, $this->resource_name . '/getoptions', array(
-			'methods'             => 'GET',
-			'callback'            => [ $this, 'get_options' ],
-			'permission_callback' => [ $this, 'login_permission_callback' ],
-		) );
-		register_rest_route( $this->namespacev1, $this->resource_name . '/updateoptins', array(
-			'methods'             => 'POST',
-			'callback'            => [ $this, 'update_option' ],
-			'permission_callback' => [ $this, 'login_permission_callback' ],
-		) );
+		register_rest_route(
+			$this->namespacev1,
+			$this->resource_name . '/getoptions',
+			[
+				'methods'             => 'GET',
+				'callback'            => [ $this, 'get_options' ],
+				'permission_callback' => [ $this, 'login_permission_callback' ],
+			]
+		);
+		register_rest_route(
+			$this->namespacev1,
+			$this->resource_name . '/updateoptins',
+			[
+				'methods'             => 'POST',
+				'callback'            => [ $this, 'update_option' ],
+				'permission_callback' => [ $this, 'login_permission_callback' ],
+			]
+		);
 	}
 
 	/**
@@ -53,12 +62,15 @@ class Api {
 	}
 
 	/**
-	 * @return false|string
+	 * Update Options.
+	 *
+	 * @param object $request_data data.
+	 * @return array
 	 */
 	public function update_option( $request_data ) {
 		$result = [
 			'updated' => false,
-			'message' => esc_html__( 'Update failed. Maybe change not found. ', 'pqe-media-tools' )
+			'message' => esc_html__( 'Update failed. Maybe change not found. ', 'pqe-media-tools' ),
 		];
 
 		$parameters = $request_data->get_params();
@@ -69,10 +81,10 @@ class Api {
 
 		$options = update_option( 'pqe_settings', $the_settings );
 
-		$result['updated'] =  boolval( $options );
+		$result['updated'] = boolval( $options );
 
-		if( $result['updated'] ){
-			$result['message'] =  esc_html__( 'Updated.', 'pqe-media-tools' );
+		if ( $result['updated'] ) {
+			$result['message'] = esc_html__( 'Updated.', 'pqe-media-tools' );
 		}
 		return $result;
 	}
@@ -83,9 +95,4 @@ class Api {
 	public function get_options() {
 		return wp_json_encode( Fns::get_options() );
 	}
-
 }
-
-
-
-

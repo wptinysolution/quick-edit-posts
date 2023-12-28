@@ -6,9 +6,13 @@ namespace TinySolutions\pqe\Controllers;
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
 }
-
+/**
+ * Installation
+ */
 class Installation {
 	/**
+	 * Activate
+	 *
 	 * @return void
 	 */
 	public static function activate() {
@@ -23,6 +27,8 @@ class Installation {
 	}
 
 	/**
+	 * Deactivation.
+	 *
 	 * @return void
 	 */
 	public static function deactivation() { }

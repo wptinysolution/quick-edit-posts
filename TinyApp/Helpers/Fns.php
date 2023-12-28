@@ -23,7 +23,7 @@ class Fns {
 	 * @return bool
 	 */
 	public static function verify_nonce() {
-		$nonce     = isset( $_REQUEST[ pqe()->nonceId ] ) ? $_REQUEST[ pqe()->nonceId ] : null;
+		$nonce = isset( $_REQUEST[ pqe()->nonceId ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ pqe()->nonceId ] ) ) : null;
 		if ( wp_verify_nonce( $nonce, pqe()->nonceId ) ) {
 			return true;
 		}
@@ -32,7 +32,9 @@ class Fns {
 	}
 
 	/**
-	 * @param $plugin_file_path
+	 * Check is plugin instilled.
+	 *
+	 * @param string $plugin_file_path Is plugins Installed.
 	 *
 	 * @return bool
 	 */
@@ -44,15 +46,13 @@ class Fns {
 
 
 	/**
-	 * @return false|string
+	 * Get Options.
+	 *
+	 * @return array
 	 */
 	public static function get_options() {
-		$defaults = array(
-
-		);
+		$defaults = [];
 		$options  = get_option( 'pqe_settings' );
 		return wp_parse_args( $options, $defaults );
 	}
-
-
 }
