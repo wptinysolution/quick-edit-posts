@@ -7,8 +7,10 @@
 	border: navajowhite;
 	border-radius: 5px;
 	cursor: pointer;
+	transition: 0.3s all;
 	&:hover{
-		background: #2271b1;
+		background: #135e96;
+		border-color: #135e96;
 	}
 }
 

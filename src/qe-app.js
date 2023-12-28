@@ -6,8 +6,7 @@
             if( isWindowOpen ) {
                 $(document.body).find('#adminmenumain').remove();
                 $(document.body).find('#woocommerce-embedded-root').remove();
-                $(popupWindow.document.body).find('.wp-heading-inline, .page-title-action').remove();
-
+                $(document.body).find('.wp-heading-inline, .page-title-action').remove();
                 $(document.body).find('#wpcontent').css({
                     margin: 0,
                 });
@@ -36,7 +35,6 @@
                     $(popupWindow.document.body).find('#adminmenumain').remove();
                     $(popupWindow.document.body).find('#woocommerce-embedded-root').remove();
                     $(popupWindow.document.body).find('.wp-heading-inline, .page-title-action').remove();
-
                     $(popupWindow.document.body).find('#wpcontent').css({
                         margin: 0,
                     });
