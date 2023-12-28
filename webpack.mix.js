@@ -23,7 +23,7 @@ mix.options(
 if (process.env.npm_config_package) {
 	mix.then(
 		function () {
-			const copyTo = path.resolve( `${temDirectory} / ${package_slug}` );
+			const copyTo = path.resolve( `${temDirectory}/${package_slug}` );
 			// Select All file then paste on list
 			let includes = [
                 "assets",
@@ -44,8 +44,8 @@ if (process.env.npm_config_package) {
 					includes.map(
 						(include) => {
                         fs.copy(
-                                `${package_path} / ${include}`,
-                                `${copyTo} / ${include}`,
+                                `${package_path}/${include}`,
+                                `${copyTo}/${include}`,
 								function (err) {
 									if (err) {
 										return console.error( err );
@@ -84,11 +84,11 @@ if (
 				}
 				wpPot(
 					{
-						package: "WP Media Tools",
+						package: "Product quick edit",
 						bugReport: "",
 						src: "**/*.php",
-						domain: "tsmlt-media-tools",
-						destFile: `languages / ${package_slug}.pot`,
+						domain: "pqe",
+						destFile: `languages/${package_slug}.pot`,
 					}
 				);
 			}
@@ -126,16 +126,13 @@ if (
 			.sass( 'src/admin-settings.scss', 'assets/css/backend/' );
 	}
 
-
-
-
-
 }
+
 if (process.env.npm_config_zip) {
 	async function getVersion() {
 		let data;
 		try {
-			data = await fs.readFile( package_path + ` / ${package_slug}.php`, "utf-8" );
+			data = await fs.readFile( package_path + `/${package_slug}.php`, "utf-8" );
 		} catch (err) {
 			console.error( err );
 		}
@@ -156,7 +153,7 @@ if (process.env.npm_config_zip) {
 	const version_get = getVersion();
 	version_get.then(
 		function (version) {
-			const destinationPath = `${temDirectory} / ${package_slug}.${version}.zip`;
+			const destinationPath = `${temDirectory}/${package_slug}.${version}.zip`;
 			const output          = fs.createWriteStream( destinationPath );
 			const archive         = archiver( "zip", { zlib: { level: 9 } } );
 			output.on(
@@ -166,7 +163,7 @@ if (process.env.npm_config_zip) {
 					console.log(
 						"Archive has been finalized and the output file descriptor has closed."
 					);
-					fs.removeSync( `${temDirectory} / ${package_slug}` );
+					fs.removeSync( `${temDirectory}/${package_slug}` );
 				}
 			);
 			output.on(
@@ -183,7 +180,7 @@ if (process.env.npm_config_zip) {
 			);
 
 			archive.pipe( output );
-			archive.directory( `${temDirectory} / ${package_slug}`, package_slug );
+			archive.directory( `${temDirectory}/${package_slug}`, package_slug );
 			archive.finalize();
 		}
 	);
