@@ -2,10 +2,10 @@
 /**
  * Main ActionHooks class.
  *
- * @package TinySolutions\pqe
+ * @package TinySolutions\qep
  */
 
-namespace TinySolutions\pqe\Controllers\Hooks;
+namespace TinySolutions\qep\Controllers\Hooks;
 
 defined( 'ABSPATH' ) || exit();
 

@@ -8,7 +8,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "TinySolutions\\pqe\\": "TinyApp"
+      "TinySolutions\\qep\\": "TinyApp"
     }
   },
   "description": ""

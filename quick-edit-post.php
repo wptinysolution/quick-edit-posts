@@ -1,16 +1,16 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       Product Quick Edit
+ * Plugin Name:       Quick Edit Post
  * Plugin URI:        https://wordpress.org/plugin/product-quick-edit
- * Description:       Product Quick Edit
+ * Description:       Quick Edit Post
  * Version:           0.0.1
  * Author:            Tiny Solutions
  * Author URI:        https://www.wptinysolutions.com/
- * Text Domain:       pqe
+ * Text Domain:       qep
  * Domain Path:       /languages
  *
- * @package TinySolutions\PQE
+ * @package TinySolutions\QEP
  */
 
 // Do not allow directly accessing this file.
@@ -21,17 +21,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define media edit Constant.
  */
-define( 'PQE_VERSION', '0.0.1' );
+define( 'QEP_VERSION', '0.0.1' );
 
-define( 'PQE_FILE', __FILE__ );
+define( 'QEP_FILE', __FILE__ );
 
-define( 'PQE_BASENAME', plugin_basename( PQE_FILE ) );
+define( 'QEP_BASENAME', plugin_basename( QEP_FILE ) );
 
-define( 'PQE_URL', plugins_url( '', PQE_FILE ) );
+define( 'QEP_URL', plugins_url( '', QEP_FILE ) );
 
-define( 'PQE_ABSPATH', dirname( PQE_FILE ) );
+define( 'QEP_ABSPATH', dirname( QEP_FILE ) );
 
-define( 'PQE_PATH', plugin_dir_path( __FILE__ ) );
+define( 'QEP_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * App Init.

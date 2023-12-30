@@ -87,7 +87,7 @@ if (
 						package: "Product quick edit",
 						bugReport: "",
 						src: "**/*.php",
-						domain: "pqe",
+						domain: "qep",
 						destFile: `languages/${package_slug}.pot`,
 					}
 				);
@@ -101,29 +101,22 @@ if (
 		 * JS
 		 */
 		mix
-            // Backend JS.
-			.js( "src/admin-settings.jsx", "assets/js/backend/" )
-			.react()
             .js( "src/qe-app.js", "assets/js/backend/" )
 			// Backend CSS
-            .sass( 'src/qe-app.scss', 'assets/css/backend/' )
-			.sass( 'src/admin-settings.scss', 'assets/css/backend/' ).sourceMaps( true, 'source-map' );
+            .sass( 'src/qe-app.scss', 'assets/css/backend/' ).sourceMaps( true, 'source-map' );
 	} else {
 		/**
 		 * JS
 		 */
 		mix
 			// Backend JS
-            .js( "src/qe-app.js", "assets/js/backend/" )
-			.js( "src/admin-settings.jsx", "assets/js/backend/" )
-			.react();
+            .js( "src/qe-app.js", "assets/js/backend/" );
 		/**
 		 * CSS
 		 */
 		mix
 			// Backend CSS
-            .sass( 'src/qe-app.scss', 'assets/css/backend/' )
-			.sass( 'src/admin-settings.scss', 'assets/css/backend/' );
+            .sass( 'src/qe-app.scss', 'assets/css/backend/' );
 	}
 
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace TinySolutions\pqe\Controllers\Admin;
+namespace TinySolutions\qep\Controllers\Admin;
 
-use TinySolutions\pqe\Helpers\Fns;
-use TinySolutions\pqe\Traits\SingletonTrait;
+use TinySolutions\qep\Helpers\Fns;
+use TinySolutions\qep\Traits\SingletonTrait;
 use WP_Error;
 
 class Api {
@@ -16,11 +16,11 @@ class Api {
 	/**
 	 * @var string
 	 */
-	private $namespacev1 = 'TinySolutions/pqe/v1';
+	private $namespacev1 = 'TinySolutions/qep/v1';
 	/**
 	 * @var string
 	 */
-	private $resource_name = '/pqe';
+	private $resource_name = '/qep';
 	/**
 	 * Construct
 	 */
@@ -70,21 +70,21 @@ class Api {
 	public function update_option( $request_data ) {
 		$result = [
 			'updated' => false,
-			'message' => esc_html__( 'Update failed. Maybe change not found. ', 'pqe-media-tools' ),
+			'message' => esc_html__( 'Update failed. Maybe change not found. ', 'qep-media-tools' ),
 		];
 
 		$parameters = $request_data->get_params();
 
-		$the_settings = get_option( 'pqe_settings', [] );
+		$the_settings = get_option( 'qep_settings', [] );
 
 		$the_settings['default_demo_text'] = ! empty( $parameters['default_demo_text'] ) ? $parameters['default_demo_text'] : '';
 
-		$options = update_option( 'pqe_settings', $the_settings );
+		$options = update_option( 'qep_settings', $the_settings );
 
 		$result['updated'] = boolval( $options );
 
 		if ( $result['updated'] ) {
-			$result['message'] = esc_html__( 'Updated.', 'pqe-media-tools' );
+			$result['message'] = esc_html__( 'Updated.', 'qep-media-tools' );
 		}
 		return $result;
 	}
