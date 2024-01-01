@@ -1,13 +1,13 @@
 <?php
 
-namespace TinySolutions\qep\Controllers\Admin;
+namespace TinySolutions\pqe\Controllers\Admin;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
 }
 
-use TinySolutions\qep\Traits\SingletonTrait;
+use TinySolutions\pqe\Traits\SingletonTrait;
 
 /**
  * Sub menu class
@@ -39,7 +39,7 @@ class AdminMenu {
 			'Product Quick Edit',
 			'Quick Edit',
 			'manage_options',
-			'qep-admin',
+			'pqe-admin',
 			[ $this, 'wp_media_page_callback' ],
 			'dashicons-tickets',
 			6
@@ -52,6 +52,6 @@ class AdminMenu {
 	 * @return void
 	 */
 	public function wp_media_page_callback() {
-		echo '<div class="wrap"><div id="qep_root"></div></div>';
+		echo '<div class="wrap"><div id="pqe_root"></div></div>';
 	}
 }

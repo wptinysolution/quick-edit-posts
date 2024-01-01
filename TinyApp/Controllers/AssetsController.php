@@ -1,8 +1,8 @@
 <?php
 
-namespace TinySolutions\qep\Controllers;
+namespace TinySolutions\pqe\Controllers;
 
-use TinySolutions\qep\Traits\SingletonTrait;
+use TinySolutions\pqe\Traits\SingletonTrait;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -37,7 +37,7 @@ class AssetsController {
 	 * Class Constructor
 	 */
 	public function __construct() {
-		$this->version = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? time() : QEP_VERSION;
+		$this->version = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? time() : PQE_VERSION;
 		/**
 		 * Admin scripts.
 		 */
@@ -55,14 +55,14 @@ class AssetsController {
 		global $pagenow;
 		$scripts = [
 			[
-				'handle' => 'qep-settings',
-				'src'    => qep()->get_assets_uri( 'js/backend/admin-settings.js' ),
+				'handle' => 'pqe-settings',
+				'src'    => pqe()->get_assets_uri( 'js/backend/admin-settings.js' ),
 				'deps'   => [],
 				'footer' => true,
 			],
 			[
 				'handle' => 'qe-app',
-				'src'    => qep()->get_assets_uri( 'js/backend/qe-app.js' ),
+				'src'    => pqe()->get_assets_uri( 'js/backend/qe-app.js' ),
 				'deps'   => [ 'jquery' ],
 				'footer' => true,
 			],
@@ -71,7 +71,7 @@ class AssetsController {
 		$styles = [
 			[
 				'handle' => 'qe-app',
-				'src'    => qep()->get_assets_uri( 'css/backend/qe-app.css' ),
+				'src'    => pqe()->get_assets_uri( 'css/backend/qe-app.css' ),
 			],
 		];
 
@@ -94,18 +94,18 @@ class AssetsController {
 			wp_enqueue_script( 'qe-app' );
 		}
 		$current_screen = get_current_screen();
-		if ( isset( $current_screen->id ) && 'toplevel_page_qep-admin' === $current_screen->id ) {
-			wp_enqueue_style( 'qep-settings' );
-			wp_enqueue_script( 'qep-settings' );
+		if ( isset( $current_screen->id ) && 'toplevel_page_pqe-admin' === $current_screen->id ) {
+			wp_enqueue_style( 'pqe-settings' );
+			wp_enqueue_script( 'pqe-settings' );
 			wp_localize_script(
-				'qep-settings',
-				'qepParams',
+				'pqe-settings',
+				'pqeParams',
 				[
 					'ajaxUrl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
 					'adminUrl'     => esc_url( admin_url() ),
 					'restApiUrl'   => esc_url_raw( rest_url() ),
 					'rest_nonce'   => wp_create_nonce( 'wp_rest' ),
-					qep()->nonceId => wp_create_nonce( qep()->nonceId ),
+					pqe()->nonceId => wp_create_nonce( pqe()->nonceId ),
 				]
 			);
 

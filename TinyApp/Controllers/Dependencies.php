@@ -1,9 +1,9 @@
 <?php
 
-namespace TinySolutions\qep\Controllers;
+namespace TinySolutions\pqe\Controllers;
 
-use TinySolutions\qep\Traits\SingletonTrait;
-use TinySolutions\qep\Helpers\Fns;
+use TinySolutions\pqe\Traits\SingletonTrait;
+use TinySolutions\pqe\Helpers\Fns;
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
@@ -57,21 +57,21 @@ class Dependencies {
 				$message        = sprintf(
 					'<strong>%s</strong> %s <strong>%s</strong> %s',
 					esc_html( self::PLUGIN_NAME ),
-					esc_html__( 'requires', 'qep' ),
-					esc_html__( 'WooCommerce', 'qep' ),
-					esc_html__( 'plugin to be active. Please activate WooCommerce to continue.', 'qep' )
+					esc_html__( 'requires', 'pqe' ),
+					esc_html__( 'WooCommerce', 'pqe' ),
+					esc_html__( 'plugin to be active. Please activate WooCommerce to continue.', 'pqe' )
 				);
-				$button_text    = esc_html__( 'Activate WooCommerce', 'qep' );
+				$button_text    = esc_html__( 'Activate WooCommerce', 'pqe' );
 			} else {
 				$activation_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' );
 				$message        = sprintf(
 					'<strong>%s</strong> %s <strong>%s</strong> %s',
 					esc_html( self::PLUGIN_NAME ),
-					esc_html__( 'requires', 'qep' ),
-					esc_html__( 'WooCommerce', 'qep' ),
-					esc_html__( 'plugin to be installed and activated. Please install WooCommerce to continue.', 'qep' )
+					esc_html__( 'requires', 'pqe' ),
+					esc_html__( 'WooCommerce', 'pqe' ),
+					esc_html__( 'plugin to be installed and activated. Please install WooCommerce to continue.', 'pqe' )
 				);
-				$button_text    = esc_html__( 'Install WooCommerce', 'qep' );
+				$button_text    = esc_html__( 'Install WooCommerce', 'pqe' );
 			}
 			$this->missing['woocommerce'] = [
 				'name'       => 'WooCommerce',
@@ -105,9 +105,9 @@ class Dependencies {
 		}
 		$message = sprintf(
 		/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'qep' ),
-			'<strong>' . esc_html__( 'Custom Post Type Woocommerce Integration', 'qep' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'qep' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'pqe' ),
+			'<strong>' . esc_html__( 'Custom Post Type Woocommerce Integration', 'pqe' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'pqe' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
 		?>
@@ -130,7 +130,7 @@ class Dependencies {
 			if ( count( $this->missing ) === $counter ) {
 				$sep = '';
 			} elseif ( count( $this->missing ) - 1 === $counter ) {
-				$sep = ' ' . esc_html__( 'and', 'qep' ) . ' ';
+				$sep = ' ' . esc_html__( 'and', 'pqe' ) . ' ';
 			} else {
 				$sep = ', ';
 			}

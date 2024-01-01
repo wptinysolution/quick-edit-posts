@@ -2,10 +2,10 @@
 /**
  * Fns Helpers class
  *
- * @package  TinySolutions\qep
+ * @package  TinySolutions\pqe
  */
 
-namespace TinySolutions\qep\Helpers;
+namespace TinySolutions\pqe\Helpers;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,8 +23,8 @@ class Fns {
 	 * @return bool
 	 */
 	public static function verify_nonce() {
-		$nonce = isset( $_REQUEST[ qep()->nonceId ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ qep()->nonceId ] ) ) : null;
-		if ( wp_verify_nonce( $nonce, qep()->nonceId ) ) {
+		$nonce = isset( $_REQUEST[ pqe()->nonceId ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ pqe()->nonceId ] ) ) : null;
+		if ( wp_verify_nonce( $nonce, pqe()->nonceId ) ) {
 			return true;
 		}
 
@@ -52,7 +52,7 @@ class Fns {
 	 */
 	public static function get_options() {
 		$defaults = [];
-		$options  = get_option( 'qep_settings' );
+		$options  = get_option( 'pqe_settings' );
 		return wp_parse_args( $options, $defaults );
 	}
 }

@@ -5,9 +5,9 @@
  * @package TinySolutions\WM
  */
 
-namespace TinySolutions\qep\Controllers\Hooks;
+namespace TinySolutions\pqe\Controllers\Hooks;
 
-use TinySolutions\qep\Helpers\Fns;
+use TinySolutions\pqe\Helpers\Fns;
 
 defined( 'ABSPATH' ) || exit();
 
@@ -23,7 +23,7 @@ class FilterHooks {
 	public static function init_hooks() {
 		/*
 		// Plugins Setting Page.
-		// add_filter( 'plugin_action_links_' . QEP_BASENAME, [ __CLASS__, 'plugins_setting_links' ] );
+		// add_filter( 'plugin_action_links_' . PQE_BASENAME, [ __CLASS__, 'plugins_setting_links' ] );
 		*/
 		add_filter( 'plugin_row_meta', [ __CLASS__, 'plugin_row_meta' ], 10, 2 );
 		add_filter( 'manage_edit-product_columns', [ __CLASS__,  'custom_product_list_columns' ] );
@@ -72,7 +72,7 @@ class FilterHooks {
 	public static function custom_class( $classes ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( 'open_window' === sanitize_text_field( wp_unslash( $_GET['window'] ?? '' ) ) ) {
-			$classes .= ' qep-window-opened opacity-0';
+			$classes .= ' pqe-window-opened opacity-0';
 		}
 		return $classes;
 	}
@@ -89,7 +89,7 @@ class FilterHooks {
 		return array_merge(
 			array_slice( $columns, 0, $sku_position ),
 			[
-				'qe_column' => esc_html__( 'Edit', 'qep' ),
+				'qe_column' => esc_html__( 'Edit', 'pqe' ),
 			],
 			array_slice( $columns, $sku_position )
 		);
@@ -101,9 +101,9 @@ class FilterHooks {
 	 */
 	/**
 		//public static function plugins_setting_links( $links ) {
-		//	$links['mediaedit_settings'] = '<a href="' . admin_url( 'admin.php?page=qep-admin' ) . '">' . esc_html__( 'Start Editing', 'qep' ) . '</a>';
+		//	$links['mediaedit_settings'] = '<a href="' . admin_url( 'admin.php?page=pqe-admin' ) . '">' . esc_html__( 'Start Editing', 'pqe' ) . '</a>';
 		//	//if ( ! Fns::is_plugins_installed( 'media-library-tools-pro/media-library-tools-pro.php' ) ) {
-		//	//	// $links['qep_pro'] = sprintf( '<a href="#" target="_blank" style="color: #39b54a; font-weight: bold;">' . esc_html__( 'Go Pro', 'wp-media' ) . '</a>' );
+		//	//	// $links['pqe_pro'] = sprintf( '<a href="#" target="_blank" style="color: #39b54a; font-weight: bold;">' . esc_html__( 'Go Pro', 'wp-media' ) . '</a>' );
 		//	//}
 		//	return $links;
 		//}
@@ -116,9 +116,9 @@ class FilterHooks {
 	 * @return array
 	 */
 	public static function plugin_row_meta( $links, $file ) {
-		if ( QEP_BASENAME === $file ) {
+		if ( PQE_BASENAME === $file ) {
 			$report_url         = 'https://www.wptinysolutions.com/contact';
-			$row_meta['issues'] = sprintf( '%2$s <a target="_blank" href="%1$s">%3$s</a>', esc_url( $report_url ), esc_html__( 'Facing issue?', 'qep' ), '<span style="color: red">' . esc_html__( 'Please open a support ticket.', 'qep' ) . '</span>' );
+			$row_meta['issues'] = sprintf( '%2$s <a target="_blank" href="%1$s">%3$s</a>', esc_url( $report_url ), esc_html__( 'Facing issue?', 'pqe' ), '<span style="color: red">' . esc_html__( 'Please open a support ticket.', 'pqe' ) . '</span>' );
 			return array_merge( $links, $row_meta );
 		}
 		return (array) $links;

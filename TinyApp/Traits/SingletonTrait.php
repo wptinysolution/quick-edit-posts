@@ -3,7 +3,7 @@
  * Singleton trait
  */
 
-namespace TinySolutions\qep\Traits;
+namespace TinySolutions\pqe\Traits;
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -44,7 +44,7 @@ trait SingletonTrait {
 	 * Sleep.
 	 */
 	public function __sleep() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'qep' ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'pqe' ), '1.0' );
 		die();
 	}
 
@@ -52,7 +52,7 @@ trait SingletonTrait {
 	 * Prevent unserializing.
 	 */
 	final public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'qep' ), '1.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cheatin&#8217; huh?', 'pqe' ), '1.0' );
 		die();
 	}
 }

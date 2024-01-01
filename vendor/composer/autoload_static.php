@@ -9,12 +9,12 @@ class ComposerStaticInita65784dd18c5c3b545b344765c7eef10
     public static $prefixLengthsPsr4 = array (
         'T' => 
         array (
-            'TinySolutions\\qep\\' => 18,
+            'TinySolutions\\pqe\\' => 18,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'TinySolutions\\qep\\' => 
+        'TinySolutions\\pqe\\' => 
         array (
             0 => __DIR__ . '/../..' . '/TinyApp',
         ),
@@ -22,16 +22,16 @@ class ComposerStaticInita65784dd18c5c3b545b344765c7eef10
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'TinySolutions\\qep\\Controllers\\Admin\\AdminMenu' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/AdminMenu.php',
-        'TinySolutions\\qep\\Controllers\\Admin\\Api' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/Api.php',
-        'TinySolutions\\qep\\Controllers\\Admin\\Review' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/Review.php',
-        'TinySolutions\\qep\\Controllers\\AssetsController' => __DIR__ . '/../..' . '/TinyApp/Controllers/AssetsController.php',
-        'TinySolutions\\qep\\Controllers\\Dependencies' => __DIR__ . '/../..' . '/TinyApp/Controllers/Dependencies.php',
-        'TinySolutions\\qep\\Controllers\\Hooks\\ActionHooks' => __DIR__ . '/../..' . '/TinyApp/Controllers/Hooks/ActionHooks.php',
-        'TinySolutions\\qep\\Controllers\\Hooks\\FilterHooks' => __DIR__ . '/../..' . '/TinyApp/Controllers/Hooks/FilterHooks.php',
-        'TinySolutions\\qep\\Controllers\\Installation' => __DIR__ . '/../..' . '/TinyApp/Controllers/Installation.php',
-        'TinySolutions\\qep\\Helpers\\Fns' => __DIR__ . '/../..' . '/TinyApp/Helpers/Fns.php',
-        'TinySolutions\\qep\\Traits\\SingletonTrait' => __DIR__ . '/../..' . '/TinyApp/Traits/SingletonTrait.php',
+        'TinySolutions\\pqe\\Controllers\\Admin\\AdminMenu' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/AdminMenu.php',
+        'TinySolutions\\pqe\\Controllers\\Admin\\Api' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/Api.php',
+        'TinySolutions\\pqe\\Controllers\\Admin\\Review' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/Review.php',
+        'TinySolutions\\pqe\\Controllers\\AssetsController' => __DIR__ . '/../..' . '/TinyApp/Controllers/AssetsController.php',
+        'TinySolutions\\pqe\\Controllers\\Dependencies' => __DIR__ . '/../..' . '/TinyApp/Controllers/Dependencies.php',
+        'TinySolutions\\pqe\\Controllers\\Hooks\\ActionHooks' => __DIR__ . '/../..' . '/TinyApp/Controllers/Hooks/ActionHooks.php',
+        'TinySolutions\\pqe\\Controllers\\Hooks\\FilterHooks' => __DIR__ . '/../..' . '/TinyApp/Controllers/Hooks/FilterHooks.php',
+        'TinySolutions\\pqe\\Controllers\\Installation' => __DIR__ . '/../..' . '/TinyApp/Controllers/Installation.php',
+        'TinySolutions\\pqe\\Helpers\\Fns' => __DIR__ . '/../..' . '/TinyApp/Helpers/Fns.php',
+        'TinySolutions\\pqe\\Traits\\SingletonTrait' => __DIR__ . '/../..' . '/TinyApp/Traits/SingletonTrait.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
