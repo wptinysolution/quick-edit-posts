@@ -1,9 +1,9 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       Product Quick Edit
- * Plugin URI:        https://wordpress.org/plugin/product-quick-edit
- * Description:       Product Quick Edit
+ * Plugin Name:       Quick Edit Post
+ * Plugin URI:        https://wordpress.org/plugin/quick-edit-post
+ * Description:       Quick Edit Post
  * Version:           0.0.1
  * Author:            Tiny Solutions
  * Author URI:        https://www.wptinysolutions.com/

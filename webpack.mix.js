@@ -84,7 +84,7 @@ if (
 				}
 				wpPot(
 					{
-						package: "Product quick edit",
+						package: "Quick edit post",
 						bugReport: "",
 						src: "**/*.php",
 						domain: "pqe",
