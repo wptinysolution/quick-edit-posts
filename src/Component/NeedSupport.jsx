@@ -34,13 +34,13 @@ function NeedSupport() {
                     <Title level={5} style={{ margin:'0 0 15px 0', fontSize: '20px'}}> For faster support please send detail of your issue.</Title>
 
                     <Paragraph type="secondary" style={{ fontSize: '18px'}}>
-                        Email: <a href={`mailto:support@example.freshdesk.com`}> support@example.freshdesk.com </a>
+                        Email: <a href={`mailto:support@tinysolutions.freshdesk.com`}> support@tinysolutions.freshdesk.com </a>
                     </Paragraph>
                     <Paragraph type="secondary" style={{ fontSize: '18px'}}>
                         This will create a ticket. We will response form there.
                     </Paragraph >
                     <Paragraph type="secondary" style={{ fontSize: '18px'}}>
-                        Check our  <a href={`#`} target={`_blank`}> Plugins List </a>
+                        Check our  <a href={`https://profiles.wordpress.org/tinysolution/#content-plugins`} target={`_blank`}> Plugins List </a>
                     </Paragraph>
                 </Content>
             </Content>

@@ -45,7 +45,7 @@ function MainHeader() {
                     },
                     {
                         key: 'needsupport',
-                        label: 'Need Support',
+                        label: 'Get Support',
                         icon: <ContactsOutlined />,
                         style: menuItemStyle,
                     }

@@ -43,3 +43,8 @@ export const getOptions = async () => {
     return await Api.get(`/getoptions`);
 }
 
+
+export const getPostTypes = async () => {
+    return await Api.get(`/getPostTypes`);
+}
+

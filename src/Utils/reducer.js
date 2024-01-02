@@ -9,6 +9,7 @@ export const initialState = {
 	},
 	generalData:{
 		isLoading: true,
+        postTypes: [],
 		selectedMenu: localStorage.getItem("current_menu") || 'settings',
 	},
 };

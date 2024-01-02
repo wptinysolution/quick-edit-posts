@@ -89,7 +89,7 @@ class FilterHooks {
 		return array_merge(
 			array_slice( $columns, 0, $sku_position ),
 			[
-				'qe_column' => esc_html__( 'Edit', 'pqe' ),
+				'qe_column' => esc_html__( 'Quick Edit', 'pqe' ),
 			],
 			array_slice( $columns, $sku_position )
 		);
