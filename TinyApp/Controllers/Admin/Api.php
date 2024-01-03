@@ -86,7 +86,7 @@ class Api {
 
 		$the_settings = get_option( 'pqe_settings', [] );
 
-		$the_settings['default_demo_text'] = ! empty( $parameters['default_demo_text'] ) ? $parameters['default_demo_text'] : '';
+		$the_settings['selected_post_types'] = ! empty( $parameters['selected_post_types'] ) ? $parameters['selected_post_types'] : [];
 
 		$options = update_option( 'pqe_settings', $the_settings );
 

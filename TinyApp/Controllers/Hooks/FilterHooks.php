@@ -26,9 +26,15 @@ class FilterHooks {
 		// add_filter( 'plugin_action_links_' . PQE_BASENAME, [ __CLASS__, 'plugins_setting_links' ] );
 		*/
 		add_filter( 'plugin_row_meta', [ __CLASS__, 'plugin_row_meta' ], 10, 2 );
-		add_filter( 'manage_edit-product_columns', [ __CLASS__,  'custom_product_list_columns' ] );
 		add_filter( 'admin_body_class', [ __CLASS__, 'custom_class' ], 99 );
 		add_action( 'get_edit_post_link', [ __CLASS__, 'redirect_after_edit_product' ], 20 );
+
+		$options = Fns::get_options();
+		if ( ! empty( $options['selected_post_types'] ) && count( $options['selected_post_types'] ) ) {
+			foreach ( $options['selected_post_types'] as $item ) {
+				add_filter( 'manage_edit-' . $item . '_columns', [ __CLASS__,  'custom_product_list_columns' ] );
+			}
+		}
 	}
 
 	/**
@@ -83,15 +89,17 @@ class FilterHooks {
 	 * @return mixed
 	 */
 	public static function custom_product_list_columns( $columns ) {
-		// Find the position of the 'sku' column.
-		$sku_position = array_search( 'sku', array_keys( $columns ), true );
-		// Insert the new column after 'sku'.
+		$title_position  = array_search( 'title', array_keys( $columns ), true );
+		$button_position = 3;
+		if ( $title_position ) {
+			$button_position = $title_position + 1;
+		}
 		return array_merge(
-			array_slice( $columns, 0, $sku_position ),
+			array_slice( $columns, 0, $button_position ),
 			[
 				'qe_column' => esc_html__( 'Quick Edit', 'pqe' ),
 			],
-			array_slice( $columns, $sku_position )
+			array_slice( $columns, $button_position )
 		);
 	}
 	/**

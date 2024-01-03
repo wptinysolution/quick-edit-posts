@@ -39,6 +39,7 @@ function App() {
     const getThePostTypes = async () => {
         const response = await getPostTypes();
         const preparedData =  await JSON.parse( response.data );
+
         await dispatch({
             type: Types.GENERAL_DATA,
             generalData: {

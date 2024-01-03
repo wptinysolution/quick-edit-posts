@@ -7,6 +7,8 @@
 
 namespace TinySolutions\pqe\Controllers\Hooks;
 
+use TinySolutions\pqe\Helpers\Fns;
+
 defined( 'ABSPATH' ) || exit();
 
 /**
@@ -20,7 +22,12 @@ class ActionHooks {
 	 * @return void
 	 */
 	public static function init_hooks() {
-		add_action( 'manage_product_posts_custom_column', [ __CLASS__, 'custom_product_list_column_content' ], 10, 2 );
+		$options = Fns::get_options();
+		if ( ! empty( $options['selected_post_types'] ) && count( $options['selected_post_types'] ) ) {
+			foreach ( $options['selected_post_types'] as $item ) {
+				add_action( 'manage_' . $item . '_posts_custom_column', [ __CLASS__, 'custom_product_list_column_content' ], 10, 2 );
+			}
+		}
 	}
 
 	/**
@@ -39,7 +46,7 @@ class ActionHooks {
 				type="button"
 				data-url="<?php echo esc_url( admin_url( $url ) ); ?>"
 			>
-                Edit
+				Edit
 			</button>
 			<?php
 		}

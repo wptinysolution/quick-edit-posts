@@ -2,6 +2,7 @@
 
 namespace TinySolutions\pqe\Controllers;
 
+use TinySolutions\pqe\Helpers\Fns;
 use TinySolutions\pqe\Traits\SingletonTrait;
 
 // Do not allow directly accessing this file.
@@ -84,11 +85,18 @@ class AssetsController {
 		foreach ( $styles as $style ) {
 			wp_register_style( $style['handle'], $style['src'], '', $this->version );
 		}
-		
-		if (
-			'edit.php' === $pagenow && 'product' === sanitize_text_field( wp_unslash( $_GET['post_type'] ?? '' ) ) ||
-			'product' === get_post_type( absint( $_GET['post'] ?? 0 ) )
-		) {
+
+		$options   = Fns::get_options();
+		$post_type = sanitize_text_field( wp_unslash( $_GET['post_type'] ?? '' ) );
+		if ( ! $post_type ) {
+			$post_type = get_post_type( absint( $_GET['post'] ?? 0 ) );
+		}
+
+		$types = [];
+		if ( ! empty( $options['selected_post_types'] ) && count( $options['selected_post_types'] ) ) {
+			$types = $options['selected_post_types'];
+		}
+		if ( 'edit.php' === $pagenow && in_array( $post_type, $types, true ) ) {
 			// Enqueue the script only on the WooCommerce product list table page.
 			wp_enqueue_style( 'qe-app' );
 			wp_enqueue_script( 'qe-app' );

@@ -28,62 +28,20 @@ function Settings() {
 
     const [stateValue, dispatch] = useStateValue();
 
-    /**
-     *
-     * @param value
-     * @param index
-     * @param field
-     */
-    const handleChangePostType = ( value, index, field ) => {
-
-
-
+    const onChange = (checkedValues) => {
         dispatch({
             type: Types.UPDATE_OPTIONS,
             options: {
                 ...stateValue.options,
-                selected_post_types: ''
+                selected_post_types: checkedValues
             }
         });
-
     };
 
-    const onChange = (checkedValues) => {
-        console.log('checked = ', checkedValues);
+    const is_pro = ( value ) => {
+        const pro_type = []
+        return pro_type.includes(value);
     };
-
-    const options = [
-        {
-            label: 'Apple',
-            value: 'Apple',
-        },
-        {
-            label: 'Pear',
-            value: 'Pear',
-        },
-        {
-            label: 'Orange',
-            value: 'Orange',
-        },
-    ];
-
-    const optionsWithDisabled = [
-        {
-            label: 'Apple',
-            value: 'Apple',
-        },
-        {
-            label: 'Pear',
-            value: 'Pear',
-        },
-        {
-            label: 'Orange',
-            value: 'Orange',
-            disabled: false,
-        },
-    ];
-
-
 
     return (
         <Layout style={{ position: 'relative' }}>
@@ -107,7 +65,6 @@ function Settings() {
                 { stateValue.options.isLoading ? <Loader/> :
                     <Content style={{
                         padding: '15px',
-                        background: 'rgb(255 255 255 / 35%)',
                         borderRadius: '5px',
                         boxShadow: 'rgb(0 0 0 / 1%) 0px 0 20px',
                     }}>
@@ -115,7 +72,7 @@ function Settings() {
                             <div className="gutter-row" style={{marginBottom: '15px'}}>
                                 <Row>
                                     <Col span={5}>
-                                        Posts Type
+                                       Support Posts Type
                                     </Col>
                                     <Col span={19}>
                                         <Checkbox.Group
@@ -123,23 +80,18 @@ function Settings() {
                                                 width: '100%',
                                             }}
                                             onChange={onChange}
+                                            value={stateValue.options.selected_post_types}
                                         >
-                                            <Col span={24}>
-                                                <Checkbox value="A">A</Checkbox>
-                                            </Col>
-                                            <Col span={24}>
-                                                <Checkbox value="B">B</Checkbox>
-                                            </Col>
-                                            <Col span={24}>
-                                                <Checkbox value="C">C</Checkbox>
-                                            </Col>
-                                            <Col span={24}>
-                                                <Checkbox value="D">D</Checkbox>
-                                            </Col>
-                                            <Col span={24}>
-                                                <Checkbox value="E">E</Checkbox>
-                                            </Col>
-
+                                        {
+                                            stateValue.generalData.postTypes.map( option => (
+                                                <Col key={option.value} span={24}>
+                                                    <Checkbox disabled={ is_pro(option.value) } value={option['value']}>
+                                                        {option['label']}
+                                                        { is_pro(option.value) ? <span style={ { color: '#ff0000', fontWeight: 'bold', fontSize: '14px' } }> PRO</span> : '' }
+                                                    </Checkbox>
+                                                </Col>
+                                            ))
+                                        }
                                         </Checkbox.Group>
                                         <Text
                                             type="secondary"

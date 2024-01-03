@@ -6,6 +6,7 @@ export const initialState = {
 	saveType: null,
 	options: {
 		isLoading: true,
+        selected_post_types:[]
 	},
 	generalData:{
 		isLoading: true,

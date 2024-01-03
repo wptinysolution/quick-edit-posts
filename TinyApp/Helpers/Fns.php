@@ -16,6 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Fns class
  */
 class Fns {
+	/**
+	 * @var array
+	 */
+	private static $cache = [];
 
 	/**
 	 *  Verify nonce.
@@ -51,8 +55,14 @@ class Fns {
 	 * @return array
 	 */
 	public static function get_options() {
-		$defaults = [];
-		$options  = get_option( 'pqe_settings' );
-		return wp_parse_args( $options, $defaults );
+		$cache_key = 'pqe_get_options';
+		if ( isset( self::$cache[ $cache_key ] ) ) {
+			return self::$cache[ $cache_key ];
+		}
+		$defaults                  = [];
+		$options                   = get_option( 'pqe_settings' );
+		$potions                   = wp_parse_args( $options, $defaults );
+		self::$cache[ $cache_key ] = $potions;
+		return $potions;
 	}
 }
