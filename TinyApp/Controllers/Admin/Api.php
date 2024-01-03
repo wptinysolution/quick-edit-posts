@@ -110,11 +110,6 @@ class Api {
 	 */
 	public function get_post_types() {
 		// Get all meta keys saved in posts of the specified post type.
-		$cpt_args        = [
-			'public'   => true,
-			'_builtin' => false,
-		];
-		$post_types      = get_post_types( $cpt_args, 'objects' );
 		$post_type_array = [
 			[
 				'value' => 'post',
@@ -125,12 +120,18 @@ class Api {
 				'label' => 'Page',
 			],
 		];
+		$cpt_args        = [
+			'public'   => true,
+			'_builtin' => false,
+		];
+		$post_types      = get_post_types( $cpt_args, 'objects' );
 		foreach ( $post_types as $key => $post_type ) {
 			$post_type_array[] = [
 				'value' => $post_type->name,
 				'label' => $post_type->label,
 			];
 		}
+		$post_type_array = apply_filters( 'pqe_get_post_types', $post_type_array );
 		return wp_json_encode( $post_type_array );
 	}
 }

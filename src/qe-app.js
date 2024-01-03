@@ -29,8 +29,19 @@
             } else {
                 // Get the URL from the 'data-url' attribute.
                 var url = $(this).data('url') + '&window=open_window';
+
+                const width = 1000;
+                const height = 650;
+                const screenWidth = window.screen.width;
+                const screenHeight = window.screen.height;
+                const left = (screenWidth - width) / 2;
+                const top = (screenHeight - height) / 2;
+
+                // Open the window with the calculated position
+                popupWindow = window.open(url, name, `width=${width},height=${height},left=${left},top=${top}`);
+
                 // Create a new popup window
-                popupWindow = window.open( url, '_blank', 'width=1000,height=600' );
+               // popupWindow = window.open( url, '_blank', 'width=1000,height=600' );
                 setTimeout(function () {
                     $(popupWindow.document.body).find('#adminmenumain').remove();
                     $(popupWindow.document.body).find('#woocommerce-embedded-root').remove();

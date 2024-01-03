@@ -86,7 +86,8 @@ class AssetsController {
 			wp_register_style( $style['handle'], $style['src'], '', $this->version );
 		}
 
-		$options   = Fns::get_options();
+		$options = Fns::get_options();
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		$post_type = sanitize_text_field( wp_unslash( $_GET['post_type'] ?? '' ) );
 		if ( ! $post_type ) {
 			$post_type = get_post_type( absint( $_GET['post'] ?? 0 ) );
@@ -96,7 +97,7 @@ class AssetsController {
 		if ( ! empty( $options['selected_post_types'] ) && count( $options['selected_post_types'] ) ) {
 			$types = $options['selected_post_types'];
 		}
-		if ( 'edit.php' === $pagenow && in_array( $post_type, $types, true ) ) {
+		if ( in_array( $post_type, $types, true ) ) {
 			// Enqueue the script only on the WooCommerce product list table page.
 			wp_enqueue_style( 'qe-app' );
 			wp_enqueue_script( 'qe-app' );

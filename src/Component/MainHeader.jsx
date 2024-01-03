@@ -39,7 +39,7 @@ function MainHeader() {
                 items={[
                     {
                         key: 'settings',
-                        label: 'Media Settings',
+                        label: 'Settings',
                         icon: <SettingOutlined />,
                         style: menuItemStyle
                     },

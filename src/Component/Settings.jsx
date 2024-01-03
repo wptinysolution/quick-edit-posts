@@ -39,7 +39,9 @@ function Settings() {
     };
 
     const is_pro = ( value ) => {
-        const pro_type = []
+        const pro_type = [
+            'product',
+        ]
         return pro_type.includes(value);
     };
 

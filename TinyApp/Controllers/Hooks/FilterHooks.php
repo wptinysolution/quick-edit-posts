@@ -26,7 +26,7 @@ class FilterHooks {
 		// add_filter( 'plugin_action_links_' . PQE_BASENAME, [ __CLASS__, 'plugins_setting_links' ] );
 		*/
 		add_filter( 'plugin_row_meta', [ __CLASS__, 'plugin_row_meta' ], 10, 2 );
-		add_filter( 'admin_body_class', [ __CLASS__, 'custom_class' ], 99 );
+		add_filter( 'admin_body_class', [ __CLASS__, 'custom_class' ] );
 		add_action( 'get_edit_post_link', [ __CLASS__, 'redirect_after_edit_product' ], 20 );
 
 		$options = Fns::get_options();
