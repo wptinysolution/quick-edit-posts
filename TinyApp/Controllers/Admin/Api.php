@@ -119,6 +119,10 @@ class Api {
 				'value' => 'page',
 				'label' => 'Page',
 			],
+			[
+				'value' => 'attachment',
+				'label' => 'Media/Attachment',
+			],
 		];
 		$cpt_args        = [
 			'public'   => true,

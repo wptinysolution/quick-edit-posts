@@ -41,6 +41,7 @@ function Settings() {
     const is_pro = ( value ) => {
         const pro_type = [
             'product',
+            'attachment'
         ]
         return pro_type.includes(value);
     };

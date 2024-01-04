@@ -25,7 +25,11 @@ class ActionHooks {
 		$options = Fns::get_options();
 		if ( ! empty( $options['selected_post_types'] ) && count( $options['selected_post_types'] ) ) {
 			foreach ( $options['selected_post_types'] as $item ) {
-				add_action( 'manage_' . $item . '_posts_custom_column', [ __CLASS__, 'custom_product_list_column_content' ], 10, 2 );
+				if ( 'attachment' === $item ) {
+					add_action( 'manage_media_custom_column', [ __CLASS__, 'custom_list_column_content' ], 10, 2 );
+				} else {
+					add_action( 'manage_' . $item . '_posts_custom_column', [ __CLASS__, 'custom_list_column_content' ], 10, 2 );
+				}
 			}
 		}
 	}
@@ -37,7 +41,7 @@ class ActionHooks {
 	 * @param int    $post_id product id.
 	 * @return void
 	 */
-	public static function custom_product_list_column_content( $column, $post_id ) {
+	public static function custom_list_column_content( $column, $post_id ) {
 		if ( 'qe_column' === $column ) {
 			$url = '/post.php?action=edit&post=' . $post_id;
 			?>

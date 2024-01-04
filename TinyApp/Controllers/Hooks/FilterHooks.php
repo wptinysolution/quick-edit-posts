@@ -32,7 +32,11 @@ class FilterHooks {
 		$options = Fns::get_options();
 		if ( ! empty( $options['selected_post_types'] ) && count( $options['selected_post_types'] ) ) {
 			foreach ( $options['selected_post_types'] as $item ) {
-				add_filter( 'manage_edit-' . $item . '_columns', [ __CLASS__,  'custom_product_list_columns' ] );
+				if ( 'attachment' === $item ) {
+					add_action( 'manage_media_columns', [ __CLASS__, 'custom_list_columns' ], 10, 2 );
+				} else {
+					add_filter( 'manage_edit-' . $item . '_columns', [ __CLASS__,  'custom_list_columns' ] );
+				}
 			}
 		}
 	}
@@ -88,7 +92,7 @@ class FilterHooks {
 	 * @param array $columns column name.
 	 * @return mixed
 	 */
-	public static function custom_product_list_columns( $columns ) {
+	public static function custom_list_columns( $columns ) {
 		$title_position  = array_search( 'title', array_keys( $columns ), true );
 		$button_position = 3;
 		if ( $title_position ) {
