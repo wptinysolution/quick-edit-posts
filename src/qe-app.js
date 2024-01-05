@@ -33,12 +33,6 @@
                 }
             }
 
-            const storedWindowInfo = localStorage.getItem('popupWindowInfo');
-
-            if (storedWindowInfo && !storedWindowInfo.closed) {
-               /// storedWindowInfo.close();
-            }
-
             // Get the URL from the 'data-url' attribute.
             var url = $(this).data('url') + '&window=open_window';
 
@@ -51,7 +45,6 @@
 
             // Open the window with the calculated position
             popupWindow = window.open(url, name, `width=${width},height=${height},left=${left},top=${top}`);
-            localStorage.setItem('popupWindowInfo', popupWindow);
 
             // Create a new popup window
            // popupWindow = window.open( url, '_blank', 'width=1000,height=600' );
