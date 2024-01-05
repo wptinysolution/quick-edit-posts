@@ -25,38 +25,51 @@
             // Check if the window is already open
             if (popupWindow && !popupWindow.closed) {
                 // If open, focus on the existing window instead of opening a new one
-                popupWindow.focus();
-            } else {
-                // Get the URL from the 'data-url' attribute.
-                var url = $(this).data('url') + '&window=open_window';
-
-                const width = 1000;
-                const height = 650;
-                const screenWidth = window.screen.width;
-                const screenHeight = window.screen.height;
-                const left = (screenWidth - width) / 2;
-                const top = (screenHeight - height) / 2;
-
-                // Open the window with the calculated position
-                popupWindow = window.open(url, name, `width=${width},height=${height},left=${left},top=${top}`);
-
-                // Create a new popup window
-               // popupWindow = window.open( url, '_blank', 'width=1000,height=600' );
-                setTimeout(function () {
-                    $(popupWindow.document.body).find('#adminmenumain').remove();
-                    $(popupWindow.document.body).find('#woocommerce-embedded-root').remove();
-                    $(popupWindow.document.body).find('#wpadminbar, .wp-heading-inline, .page-title-action').remove();
-                    $(popupWindow.document.body).find('#wpcontent').css({
-                        margin: 0,
-                    });
-                    $(popupWindow.document.body).find('#wpbody').css({
-                        margin: 0,
-                    });
-                    $(popupWindow.document.body).removeClass('opacity-0');
-                    popupWindow.document.close();
-                }, 1000); // You can adjust the delay time as needed
-
+                if ( true === confirm("Close Previous Window and Open Current one") ) {
+                    popupWindow.close();
+                } else {
+                    popupWindow.focus();
+                    return;
+                }
             }
+
+            const storedWindowInfo = localStorage.getItem('popupWindowInfo');
+
+            if (storedWindowInfo && !storedWindowInfo.closed) {
+               /// storedWindowInfo.close();
+            }
+
+            // Get the URL from the 'data-url' attribute.
+            var url = $(this).data('url') + '&window=open_window';
+
+            const width = 1000;
+            const height = 650;
+            const screenWidth = window.screen.width;
+            const screenHeight = window.screen.height;
+            const left = (screenWidth - width) / 2;
+            const top = (screenHeight - height) / 2;
+
+            // Open the window with the calculated position
+            popupWindow = window.open(url, name, `width=${width},height=${height},left=${left},top=${top}`);
+            localStorage.setItem('popupWindowInfo', popupWindow);
+
+            // Create a new popup window
+           // popupWindow = window.open( url, '_blank', 'width=1000,height=600' );
+            setTimeout(function () {
+                $(popupWindow.document.body).find('#adminmenumain').remove();
+                $(popupWindow.document.body).find('#woocommerce-embedded-root').remove();
+                $(popupWindow.document.body).find('#wpadminbar, .wp-heading-inline, .page-title-action').remove();
+                $(popupWindow.document.body).find('#wpcontent').css({
+                    margin: 0,
+                });
+                $(popupWindow.document.body).find('#wpbody').css({
+                    margin: 0,
+                });
+                $(popupWindow.document.body).removeClass('opacity-0');
+                popupWindow.document.close();
+            }, 1000); // You can adjust the delay time as needed
+
+
 
         });
     });
