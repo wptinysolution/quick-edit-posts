@@ -88,7 +88,7 @@ function Settings() {
                                         {
                                             stateValue.generalData.postTypes.map( option => (
                                                 <Col key={option.value} span={24}>
-                                                    <Checkbox disabled={ is_pro(option.value) } value={option['value']}>
+                                                    <Checkbox value={option['value']}>
                                                         {option['label']}
                                                         { is_pro(option.value) ? <span style={ { color: '#ff0000', fontWeight: 'bold', fontSize: '14px' } }> PRO</span> : '' }
                                                     </Checkbox>
