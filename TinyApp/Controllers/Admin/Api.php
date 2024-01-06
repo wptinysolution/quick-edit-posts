@@ -78,8 +78,7 @@ class Api {
 	 */
 	public function update_option( $request_data ) {
 		$result = [
-			'updated' => false,
-			'message' => esc_html__( 'Update failed. Maybe change not found. ', 'pqe-media-tools' ),
+			'message' => esc_html__( 'Update failed. Maybe change not found.', 'pqe' ),
 		];
 
 		$parameters = $request_data->get_params();
@@ -93,7 +92,7 @@ class Api {
 		$result['updated'] = boolval( $options );
 
 		if ( $result['updated'] ) {
-			$result['message'] = esc_html__( 'Updated.', 'pqe-media-tools' );
+			$result['message'] = esc_html__( 'Updated.', 'pqe' );
 		}
 		return $result;
 	}
@@ -109,33 +108,6 @@ class Api {
 	 * @return false|string
 	 */
 	public function get_post_types() {
-		// Get all meta keys saved in posts of the specified post type.
-		$post_type_array = [
-			[
-				'value' => 'post',
-				'label' => 'Posts',
-			],
-			[
-				'value' => 'page',
-				'label' => 'Page',
-			],
-			[
-				'value' => 'attachment',
-				'label' => 'Media/Attachment',
-			],
-		];
-		$cpt_args        = [
-			'public'   => true,
-			'_builtin' => false,
-		];
-		$post_types      = get_post_types( $cpt_args, 'objects' );
-		foreach ( $post_types as $key => $post_type ) {
-			$post_type_array[] = [
-				'value' => $post_type->name,
-				'label' => $post_type->label,
-			];
-		}
-		$post_type_array = apply_filters( 'pqe_get_post_types', $post_type_array );
-		return wp_json_encode( $post_type_array );
+		return wp_json_encode( Fns::support_list() );
 	}
 }

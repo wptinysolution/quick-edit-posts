@@ -41,7 +41,7 @@ class AdminMenu {
 			'manage_options',
 			'pqe-admin',
 			[ $this, 'wp_media_page_callback' ],
-			'dashicons-tickets',
+			'dashicons-edit-large',
 			6
 		);
 	}

@@ -38,11 +38,8 @@ function Settings() {
         });
     };
 
-    const is_pro = ( value ) => {
-        const pro_type = [
-            'product',
-            'attachment'
-        ]
+    const is_free = ( value ) => {
+        const pro_type = pqeParams.free_list;
         return pro_type.includes(value);
     };
 
@@ -90,21 +87,15 @@ function Settings() {
                                                 <Col key={option.value} span={24}>
                                                     <Checkbox value={option['value']}>
                                                         {option['label']}
-                                                        { is_pro(option.value) ? <span style={ { color: '#ff0000', fontWeight: 'bold', fontSize: '14px' } }> PRO</span> : '' }
+                                                        { ! is_free(option.value) ? <span style={ { color: '#ff0000', fontWeight: 'bold', fontSize: '14px' } }> PRO</span> : '' }
                                                     </Checkbox>
                                                 </Col>
                                             ))
                                         }
                                         </Checkbox.Group>
-                                        <Text
-                                            type="secondary"
-                                        >
-                                            This is example field
-                                        </Text>
-
+                                        <Text type="secondary" >This is example field </Text>
                                     </Col>
                                 </Row>
-
 
                             </div>
                             <Divider/>

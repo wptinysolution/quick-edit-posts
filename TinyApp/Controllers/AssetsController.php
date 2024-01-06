@@ -111,6 +111,7 @@ class AssetsController {
 				'pqeParams',
 				[
 					'ajaxUrl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
+					'free_list'    => Fns::free_list(),
 					'adminUrl'     => esc_url( admin_url() ),
 					'restApiUrl'   => esc_url_raw( rest_url() ),
 					'rest_nonce'   => wp_create_nonce( 'wp_rest' ),

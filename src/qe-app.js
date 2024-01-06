@@ -20,7 +20,7 @@
         // Initialize a variable to store the reference to the opened window
         let popupWindow = null;
         // Add a click event listener to the button with the class 'edit-button'.
-        $('#wpbody').on('click', '.edit-button', function (event) {
+        $('#wpbody').on('click', '.editable-btn', function (event) {
             event.preventDefault();
             // Check if the window is already open
             if (popupWindow && !popupWindow.closed) {

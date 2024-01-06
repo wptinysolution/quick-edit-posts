@@ -44,9 +44,11 @@ class ActionHooks {
 	public static function custom_list_column_content( $column, $post_id ) {
 		if ( 'qe_column' === $column ) {
 			$url = '/post.php?action=edit&post=' . $post_id;
+            global $post;
+             // error_log( print_r( $post->post_type, true) . "\n\n", 3, __DIR__ . '/log.txt' );
 			?>
 			<button
-				class="edit-button"
+				class="edit-button editable-btn"
 				type="button"
 				data-url="<?php echo esc_url( admin_url( $url ) ); ?>"
 			>
