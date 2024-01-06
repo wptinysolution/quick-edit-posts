@@ -123,7 +123,7 @@ if ( ! class_exists( PQE::class ) ) {
 		 * @return string
 		 */
 		public function pro_version_link() {
-			return '#';
+			return 'https://wordpress.org/plugins/cpt-woo-integration/';
 		}
 	}
 

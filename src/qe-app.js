@@ -17,6 +17,11 @@
             }
         }, 1000); // You can adjust the delay time as needed
 
+        $('#wpbody').on('click', '.not-editable-btn', function (event) {
+            if (window.confirm('This is  PRO feature. Go pro?')) {
+                window.location.href= pqeParams.pro_link;
+            }
+        });
         // Initialize a variable to store the reference to the opened window
         let popupWindow = null;
         // Add a click event listener to the button with the class 'edit-button'.

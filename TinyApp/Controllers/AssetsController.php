@@ -97,10 +97,24 @@ class AssetsController {
 		if ( ! empty( $options['selected_post_types'] ) && count( $options['selected_post_types'] ) ) {
 			$types = $options['selected_post_types'];
 		}
+		$params = [
+			'ajaxUrl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
+			'free_list'    => Fns::free_list(),
+			'adminUrl'     => esc_url( admin_url() ),
+			'pro_link'     => esc_url( pqe()->pro_version_link() ),
+			'restApiUrl'   => esc_url_raw( rest_url() ),
+			'rest_nonce'   => wp_create_nonce( 'wp_rest' ),
+			pqe()->nonceId => wp_create_nonce( pqe()->nonceId ),
+		];
 		if ( in_array( $post_type, $types, true ) ) {
 			// Enqueue the script only on the WooCommerce product list table page.
 			wp_enqueue_style( 'qe-app' );
 			wp_enqueue_script( 'qe-app' );
+			wp_localize_script(
+				'qe-app',
+				'pqeParams',
+				$params
+			);
 		}
 		$current_screen = get_current_screen();
 		if ( isset( $current_screen->id ) && 'toplevel_page_pqe-admin' === $current_screen->id ) {
@@ -109,14 +123,7 @@ class AssetsController {
 			wp_localize_script(
 				'pqe-settings',
 				'pqeParams',
-				[
-					'ajaxUrl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
-					'free_list'    => Fns::free_list(),
-					'adminUrl'     => esc_url( admin_url() ),
-					'restApiUrl'   => esc_url_raw( rest_url() ),
-					'rest_nonce'   => wp_create_nonce( 'wp_rest' ),
-					pqe()->nonceId => wp_create_nonce( pqe()->nonceId ),
-				]
+				$params
 			);
 
 		}

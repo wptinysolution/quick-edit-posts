@@ -43,14 +43,21 @@ class ActionHooks {
 	 */
 	public static function custom_list_column_content( $column, $post_id ) {
 		if ( 'qe_column' === $column ) {
-			$url = '/post.php?action=edit&post=' . $post_id;
-            global $post;
-             // error_log( print_r( $post->post_type, true) . "\n\n", 3, __DIR__ . '/log.txt' );
+			global $post;
+			$classes = [];
+			$url     = '#';
+			if ( empty( Fns::free_list() ) || ( ! empty( Fns::free_list() ) && in_array( $post->post_type, Fns::free_list(), true ) ) ) {
+				$classes[] = 'editable-btn';
+				$url       = '/post.php?action=edit&post=' . $post_id;
+				$url       = admin_url( $url );
+			} else {
+				$classes[] = 'not-editable-btn';
+			}
 			?>
 			<button
-				class="edit-button editable-btn"
+				class="edit-button <?php echo esc_attr( implode( ' ', $classes ) ); ?>"
 				type="button"
-				data-url="<?php echo esc_url( admin_url( $url ) ); ?>"
+				data-url="<?php echo esc_url( $url ); ?>"
 			>
 				Edit
 			</button>

@@ -72,7 +72,7 @@ function Settings() {
                             <div className="gutter-row" style={{marginBottom: '15px'}}>
                                 <Row>
                                     <Col span={5}>
-                                       Support Posts Type
+                                       Enable Quick Edit For
                                     </Col>
                                     <Col span={19}>
                                         <Checkbox.Group
@@ -93,7 +93,7 @@ function Settings() {
                                             ))
                                         }
                                         </Checkbox.Group>
-                                        <Text type="secondary" >This is example field </Text>
+                                        {/*<Text type="secondary" >This is example field </Text>*/}
                                     </Col>
                                 </Row>
 
