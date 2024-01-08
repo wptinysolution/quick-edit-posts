@@ -110,8 +110,10 @@ class Fns {
 			'post',
 			'page',
 			'book',
+			'product',
 			'lp_course',
 			'attachment',
+			'rtsb_builder',
 			'e-landing-page',
 			'elementor_library',
 		];
