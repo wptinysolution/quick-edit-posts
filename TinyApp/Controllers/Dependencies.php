@@ -57,21 +57,21 @@ class Dependencies {
 				$message        = sprintf(
 					'<strong>%s</strong> %s <strong>%s</strong> %s',
 					esc_html( self::PLUGIN_NAME ),
-					esc_html__( 'requires', 'pqe' ),
-					esc_html__( 'WooCommerce', 'pqe' ),
-					esc_html__( 'plugin to be active. Please activate WooCommerce to continue.', 'pqe' )
+					esc_html__( 'requires', 'quick-edit-post' ),
+					esc_html__( 'WooCommerce', 'quick-edit-post' ),
+					esc_html__( 'plugin to be active. Please activate WooCommerce to continue.', 'quick-edit-post' )
 				);
-				$button_text    = esc_html__( 'Activate WooCommerce', 'pqe' );
+				$button_text    = esc_html__( 'Activate WooCommerce', 'quick-edit-post' );
 			} else {
 				$activation_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' );
 				$message        = sprintf(
 					'<strong>%s</strong> %s <strong>%s</strong> %s',
 					esc_html( self::PLUGIN_NAME ),
-					esc_html__( 'requires', 'pqe' ),
-					esc_html__( 'WooCommerce', 'pqe' ),
-					esc_html__( 'plugin to be installed and activated. Please install WooCommerce to continue.', 'pqe' )
+					esc_html__( 'requires', 'quick-edit-post' ),
+					esc_html__( 'WooCommerce', 'quick-edit-post' ),
+					esc_html__( 'plugin to be installed and activated. Please install WooCommerce to continue.', 'quick-edit-post' )
 				);
-				$button_text    = esc_html__( 'Install WooCommerce', 'pqe' );
+				$button_text    = esc_html__( 'Install WooCommerce', 'quick-edit-post' );
 			}
 			$this->missing['woocommerce'] = [
 				'name'       => 'WooCommerce',
@@ -99,15 +99,11 @@ class Dependencies {
 	 * Admin Notice For Required PHP Version
 	 */
 	public function minimum_php_version() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['activate'] ) ) {
-			unset( $_GET['activate'] );
-		}
 		$message = sprintf(
 		/* translators: 1: Plugin name 2: PHP 3: Required PHP version */
-			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'pqe' ),
-			'<strong>' . esc_html__( 'Custom Post Type Woocommerce Integration', 'pqe' ) . '</strong>',
-			'<strong>' . esc_html__( 'PHP', 'pqe' ) . '</strong>',
+			esc_html__( '"%1$s" requires "%2$s" version %3$s or greater.', 'quick-edit-post' ),
+			'<strong>' . esc_html__( 'Custom Post Type Woocommerce Integration', 'quick-edit-post' ) . '</strong>',
+			'<strong>' . esc_html__( 'PHP', 'quick-edit-post' ) . '</strong>',
 			self::MINIMUM_PHP_VERSION
 		);
 		?>
@@ -123,17 +119,7 @@ class Dependencies {
 	 * Adds admin notice.
 	 */
 	public function missing_plugins_warning() {
-		$missingPlugins = '';
-		$counter        = 0;
 		foreach ( $this->missing as $plugin ) {
-			$counter++;
-			if ( count( $this->missing ) === $counter ) {
-				$sep = '';
-			} elseif ( count( $this->missing ) - 1 === $counter ) {
-				$sep = ' ' . esc_html__( 'and', 'pqe' ) . ' ';
-			} else {
-				$sep = ', ';
-			}
 			?>
 			<div class="cptwint-wrapper error notice_error">
 				<p>

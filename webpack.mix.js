@@ -87,7 +87,7 @@ if (
 						package: "Quick edit post",
 						bugReport: "",
 						src: "**/*.php",
-						domain: "pqe",
+						domain: "quick-edit-post",
 						destFile: `languages/${package_slug}.pot`,
 					}
 				);

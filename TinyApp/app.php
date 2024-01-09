@@ -83,7 +83,7 @@ if ( ! class_exists( PQE::class ) ) {
 		 * Load Text Domain
 		 */
 		public function language() {
-			load_plugin_textdomain( 'pqe', false, PQE_ABSPATH . '/languages/' );
+			load_plugin_textdomain( 'quick-edit-post', false, PQE_ABSPATH . '/languages/' );
 		}
 
 		/**

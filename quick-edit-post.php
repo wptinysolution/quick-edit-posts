@@ -7,7 +7,7 @@
  * Version:           0.0.1
  * Author:            Tiny Solutions
  * Author URI:        https://www.wptinysolutions.com/
- * Text Domain:       pqe
+ * Text Domain:       quick-edit-post
  * Domain Path:       /languages
  *
  * @package TinySolutions\PQE

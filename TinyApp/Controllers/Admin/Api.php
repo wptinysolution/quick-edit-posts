@@ -78,7 +78,7 @@ class Api {
 	 */
 	public function update_option( $request_data ) {
 		$result = [
-			'message' => esc_html__( 'Update failed. Maybe change not found.', 'pqe' ),
+			'message' => esc_html__( 'Update failed. Maybe change not found.', 'quick-edit-post' ),
 		];
 
 		$parameters = $request_data->get_params();
@@ -92,7 +92,7 @@ class Api {
 		$result['updated'] = boolval( $options );
 
 		if ( $result['updated'] ) {
-			$result['message'] = esc_html__( 'Updated.', 'pqe' );
+			$result['message'] = esc_html__( 'Updated.', 'quick-edit-post' );
 		}
 		return $result;
 	}

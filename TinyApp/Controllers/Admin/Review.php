@@ -18,7 +18,7 @@ class Review {
 	 *
 	 * @var string
 	 */
-	public string $textdomain = 'pqe';
+	public string $textdomain = 'quick-edit-post';
 
 	/**
 	 * Init
