@@ -58,7 +58,7 @@ function MainHeader() {
                             selectedMenu : key
                         }
                     });
-                    localStorage.setItem( "current_menu", key );
+                    localStorage.setItem( "qep_current_menu", key );
                 } }
             />
         </Header>

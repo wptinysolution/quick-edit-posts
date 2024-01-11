@@ -11,7 +11,7 @@ export const initialState = {
 	generalData:{
 		isLoading: true,
         postTypes: [],
-		selectedMenu: localStorage.getItem("current_menu") || 'settings',
+		selectedMenu: localStorage.getItem("qep_current_menu") || 'settings',
 	},
 };
 
