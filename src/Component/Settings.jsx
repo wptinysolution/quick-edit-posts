@@ -84,13 +84,18 @@ function Settings() {
                                         >
                                         {
                                             stateValue.generalData.postTypes.map( option => (
-                                                <Col key={option.value} span={24}>
+                                                is_free(option.value) &&
+                                                <Col style={ { margin: '5px 0' } } key={option.value} span={24}>
                                                     <Checkbox value={option['value']}>
                                                         {option['label']}
-                                                        { ! is_free(option.value) ? <span style={ { color: '#ff0000', fontWeight: 'bold', fontSize: '14px' } }> PRO</span> : '' }
+                                                        {!is_free(option.value) ? <span style={{
+                                                            color: '#ff0000',
+                                                            fontWeight: 'bold',
+                                                            fontSize: '14px'
+                                                        }}> PRO</span> : ''}
                                                     </Checkbox>
                                                 </Col>
-                                            ))
+                                            ) )
                                         }
                                         </Checkbox.Group>
                                         {/*<Text type="secondary" >This is example field </Text>*/}

@@ -18,7 +18,7 @@ class Dependencies {
 	 */
 	use SingletonTrait;
 
-	const PLUGIN_NAME = 'Cpt Boilerplate';
+	const PLUGIN_NAME = 'Quick Edit Post';
 
 	const MINIMUM_PHP_VERSION = '7.4';
 	/**
@@ -41,57 +41,17 @@ class Dependencies {
 			$this->allOk = false;
 		}
 
-		if ( ! function_exists( 'is_plugin_active' ) ) {
-			include_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
-		if ( ! function_exists( 'wp_create_nonce' ) ) {
-			require_once ABSPATH . 'wp-includes/pluggable.php';
-		}
-
-		// Check WooCommerce.
-		$woocommerce = 'woocommerce/woocommerce.php';
-
-		if ( ! is_plugin_active( $woocommerce ) ) {
-			if ( $this->is_plugins_installed( $woocommerce ) ) {
-				$activation_url = wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $woocommerce . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $woocommerce );
-				$message        = sprintf(
-					'<strong>%s</strong> %s <strong>%s</strong> %s',
-					esc_html( self::PLUGIN_NAME ),
-					esc_html__( 'requires', 'quick-edit-post' ),
-					esc_html__( 'WooCommerce', 'quick-edit-post' ),
-					esc_html__( 'plugin to be active. Please activate WooCommerce to continue.', 'quick-edit-post' )
-				);
-				$button_text    = esc_html__( 'Activate WooCommerce', 'quick-edit-post' );
-			} else {
-				$activation_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=woocommerce' ), 'install-plugin_woocommerce' );
-				$message        = sprintf(
-					'<strong>%s</strong> %s <strong>%s</strong> %s',
-					esc_html( self::PLUGIN_NAME ),
-					esc_html__( 'requires', 'quick-edit-post' ),
-					esc_html__( 'WooCommerce', 'quick-edit-post' ),
-					esc_html__( 'plugin to be installed and activated. Please install WooCommerce to continue.', 'quick-edit-post' )
-				);
-				$button_text    = esc_html__( 'Install WooCommerce', 'quick-edit-post' );
-			}
-			$this->missing['woocommerce'] = [
-				'name'       => 'WooCommerce',
-				'slug'       => 'woocommerce',
-				'file_name'  => $woocommerce,
-				'url'        => $activation_url,
-				'message'    => $message,
-				'button_txt' => $button_text,
-			];
-			if ( $this->is_plugins_installed( $woocommerce ) ) {
-				unset( $this->missing['woocommerce']['slug'] );
-			}
-		}
-
-		if ( ! empty( $this->missing ) ) {
-			add_action( 'admin_notices', [ $this, 'missing_plugins_warning' ] );
-
-			$this->allOk = false;
-		}
-
+        //    if ( ! function_exists( 'is_plugin_active' ) ) {
+        //        include_once ABSPATH . 'wp-admin/includes/plugin.php';
+        //    }
+        //    if ( ! function_exists( 'wp_create_nonce' ) ) {
+        //        require_once ABSPATH . 'wp-includes/pluggable.php';
+        //    }
+        //
+        //    if ( ! empty( $this->missing ) ) {
+        //        add_action( 'admin_notices', [ $this, 'missing_plugins_warning' ] );
+        //        $this->allOk = false;
+        //    }
 		return $this->allOk;
 	}
 
