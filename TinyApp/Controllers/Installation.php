@@ -16,13 +16,10 @@ class Installation {
 	 * @return void
 	 */
 	public static function activate() {
-		if ( ! get_option( 'pqe_plugin_version' ) ) {
-			$options             = get_option( 'pqe_settings', [] );
+		if ( ! get_option( 'tinysolutions_pqe_plugin_version' ) ) {
 			$get_activation_time = strtotime( 'now' );
-
-			update_option( 'pqe_settings', $options );
-			update_option( 'pqe_plugin_version', PQE_VERSION );
-			update_option( 'pqe_plugin_activation_time', $get_activation_time );
+			update_option( 'tinysolutions_pqe_plugin_version', TSPQE_VERSION );
+			update_option( 'tinysolutions_pqe_plugin_activation_time', $get_activation_time );
 		}
 	}
 

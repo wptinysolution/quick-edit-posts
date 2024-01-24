@@ -38,7 +38,7 @@ class AssetsController {
 	 * Class Constructor
 	 */
 	public function __construct() {
-		$this->version = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? time() : PQE_VERSION;
+		$this->version = ( defined( 'WP_DEBUG' ) && WP_DEBUG ) ? time() : TSPQE_VERSION;
 		/**
 		 * Admin scripts.
 		 */
@@ -57,13 +57,13 @@ class AssetsController {
 		$scripts = [
 			[
 				'handle' => 'pqe-settings',
-				'src'    => pqe()->get_assets_uri( 'js/backend/admin-settings.js' ),
+				'src'    => tinysolutions_pqe()->get_assets_uri( 'js/backend/admin-settings.js' ),
 				'deps'   => [],
 				'footer' => true,
 			],
 			[
 				'handle' => 'qe-app',
-				'src'    => pqe()->get_assets_uri( 'js/backend/qe-app.js' ),
+				'src'    => tinysolutions_pqe()->get_assets_uri( 'js/backend/qe-app.js' ),
 				'deps'   => [ 'jquery' ],
 				'footer' => true,
 			],
@@ -72,7 +72,7 @@ class AssetsController {
 		$styles = [
 			[
 				'handle' => 'qe-app',
-				'src'    => pqe()->get_assets_uri( 'css/backend/qe-app.css' ),
+				'src'    => tinysolutions_pqe()->get_assets_uri( 'css/backend/qe-app.css' ),
 			],
 		];
 
@@ -98,13 +98,13 @@ class AssetsController {
 			$types = $options['selected_post_types'];
 		}
 		$params = [
-			'ajaxUrl'      => esc_url( admin_url( 'admin-ajax.php' ) ),
-			'free_list'    => Fns::free_list(),
-			'adminUrl'     => esc_url( admin_url() ),
-			'pro_link'     => esc_url( pqe()->pro_version_link() ),
-			'restApiUrl'   => esc_url_raw( rest_url() ),
-			'rest_nonce'   => wp_create_nonce( 'wp_rest' ),
-			pqe()->nonceId => wp_create_nonce( pqe()->nonceId ),
+			'ajaxUrl'                    => esc_url( admin_url( 'admin-ajax.php' ) ),
+			'free_list'                  => Fns::free_list(),
+			'adminUrl'                   => esc_url( admin_url() ),
+			'pro_link'                   => esc_url( tinysolutions_pqe()->pro_version_link() ),
+			'restApiUrl'                 => esc_url_raw( rest_url() ),
+			'rest_nonce'                 => wp_create_nonce( 'wp_rest' ),
+			tinysolutions_pqe()->nonceId => wp_create_nonce( tinysolutions_pqe()->nonceId ),
 		];
 		if ( in_array( $post_type, $types, true ) ) {
 			// Enqueue the script only on the WooCommerce product list table page.

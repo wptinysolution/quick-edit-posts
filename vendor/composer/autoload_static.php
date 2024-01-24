@@ -24,7 +24,6 @@ class ComposerStaticInita65784dd18c5c3b545b344765c7eef10
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'TinySolutions\\pqe\\Controllers\\Admin\\AdminMenu' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/AdminMenu.php',
         'TinySolutions\\pqe\\Controllers\\Admin\\Api' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/Api.php',
-        'TinySolutions\\pqe\\Controllers\\Admin\\Review' => __DIR__ . '/../..' . '/TinyApp/Controllers/Admin/Review.php',
         'TinySolutions\\pqe\\Controllers\\AssetsController' => __DIR__ . '/../..' . '/TinyApp/Controllers/AssetsController.php',
         'TinySolutions\\pqe\\Controllers\\Dependencies' => __DIR__ . '/../..' . '/TinyApp/Controllers/Dependencies.php',
         'TinySolutions\\pqe\\Controllers\\Hooks\\ActionHooks' => __DIR__ . '/../..' . '/TinyApp/Controllers/Hooks/ActionHooks.php',

@@ -23,9 +23,7 @@ class FilterHooks {
 	public static function init_hooks() {
 		/*
 		// Plugins Setting Page.
-		// add_filter( 'plugin_action_links_' . PQE_BASENAME, [ __CLASS__, 'plugins_setting_links' ] );
 		*/
-		add_filter( 'plugin_row_meta', [ __CLASS__, 'plugin_row_meta' ], 10, 2 );
 		add_filter( 'admin_body_class', [ __CLASS__, 'custom_class' ] );
 		add_action( 'get_edit_post_link', [ __CLASS__, 'redirect_after_edit_product' ], 20 );
 
@@ -120,19 +118,5 @@ class FilterHooks {
 		//	return $links;
 		//}
 	 **/
-	/**
-	 *
-	 * @param string $links LINKS.
-	 * @param string $file file path.
-	 *
-	 * @return array
-	 */
-	public static function plugin_row_meta( $links, $file ) {
-		if ( PQE_BASENAME === $file ) {
-			$report_url         = 'https://www.wptinysolutions.com/contact';
-			$row_meta['issues'] = sprintf( '%2$s <a target="_blank" href="%1$s">%3$s</a>', esc_url( $report_url ), esc_html__( 'Facing issue?', 'quick-edit-post' ), '<span style="color: red">' . esc_html__( 'Please open a support ticket.', 'quick-edit-post' ) . '</span>' );
-			return array_merge( $links, $row_meta );
-		}
-		return (array) $links;
-	}
+	
 }

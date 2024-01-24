@@ -9,7 +9,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'This script cannot be accessed directly.' );
 }
-require_once PQE_PATH . 'vendor/autoload.php';
+require_once TSPQE_PATH . 'vendor/autoload.php';
 
 use TinySolutions\pqe\Traits\SingletonTrait;
 use TinySolutions\pqe\Controllers\Installation;
@@ -20,18 +20,18 @@ use TinySolutions\pqe\Controllers\Hooks\ActionHooks;
 use TinySolutions\pqe\Controllers\Admin\AdminMenu;
 use TinySolutions\pqe\Controllers\Admin\Api;
 
-if ( ! class_exists( PQE::class ) ) {
+if ( ! class_exists( Tinysolutions_PQE::class ) ) {
 	/**
 	 * Main initialization class.
 	 */
-	final class PQE {
+	final class Tinysolutions_PQE {
 
 		/**
 		 * Nonce id
 		 *
 		 * @var string
 		 */
-		public $nonceId = 'pqe_wpnonce';
+		public $nonceId = 'tinysolutions_pqe_wpnonce';
 		/**
 		 * Singleton
 		 */
@@ -44,9 +44,9 @@ if ( ! class_exists( PQE::class ) ) {
 			add_action( 'init', [ $this, 'language' ] );
 			add_action( 'plugins_loaded', [ $this, 'init' ], 100 );
 			// Register Plugin Active Hook.
-			register_activation_hook( PQE_FILE, [ Installation::class, 'activate' ] );
+			register_activation_hook( TSPQE_FILE, [ Installation::class, 'activate' ] );
 			// Register Plugin Deactivate Hook.
-			register_deactivation_hook( PQE_FILE, [ Installation::class, 'deactivation' ] );
+			register_deactivation_hook( TSPQE_FILE, [ Installation::class, 'deactivation' ] );
 		}
 
 		/**
@@ -58,7 +58,7 @@ if ( ! class_exists( PQE::class ) ) {
 		 */
 		public function get_assets_uri( $file ) {
 			$file = ltrim( $file, '/' );
-			return trailingslashit( PQE_URL . '/assets' ) . $file;
+			return trailingslashit( TSPQE_URL . '/assets' ) . $file;
 		}
 
 		/**
@@ -67,7 +67,7 @@ if ( ! class_exists( PQE::class ) ) {
 		 * @return string
 		 */
 		public function get_template_path() {
-			return apply_filters( 'pqe_template_path', 'templates/' );
+			return apply_filters( 'tinysolutions_pqe_template_path', 'templates/' );
 		}
 
 		/**
@@ -76,14 +76,14 @@ if ( ! class_exists( PQE::class ) ) {
 		 * @return string
 		 */
 		public function plugin_path() {
-			return untrailingslashit( plugin_dir_path( PQE_FILE ) );
+			return untrailingslashit( plugin_dir_path( TSPQE_FILE ) );
 		}
 
 		/**
 		 * Load Text Domain
 		 */
 		public function language() {
-			load_plugin_textdomain( 'quick-edit-post', false, PQE_ABSPATH . '/languages/' );
+			load_plugin_textdomain( 'quick-edit-post', false, TSPQE_ABSPATH . '/languages/' );
 		}
 
 		/**
@@ -96,7 +96,7 @@ if ( ! class_exists( PQE::class ) ) {
 				return;
 			}
 
-			do_action( 'pqe/before_loaded' );
+			do_action( 'tinysolutions_pqe/before_loaded' );
 
 			// Include File.
 			AssetsController::instance();
@@ -105,34 +105,25 @@ if ( ! class_exists( PQE::class ) ) {
 			ActionHooks::init_hooks();
 			Api::instance();
 
-			do_action( 'pqe/after_loaded' );
+			do_action( 'tinysolutions_pqe/after_loaded' );
 		}
 
 		/**
-		 * Checks if Pro version installed
-		 *
-		 * @return boolean
-		 */
-		public function has_pro() {
-			return function_exists( 'pqep' );
-		}
-
-		/**
-		 * PRO Version URL.
+		 * If Need External Addons.
 		 *
 		 * @return string
 		 */
 		public function pro_version_link() {
-			return 'https://wordpress.org/plugins/cpt-woo-integration/';
+			return '#';
 		}
 	}
 
 	/**
-	 * @return PQE
+	 * @return Tinysolutions_PQE
 	 */
-	function pqe() {
-		return PQE::instance();
+	function tinysolutions_pqe() {
+		return Tinysolutions_PQE::instance();
 	}
 
-	pqe();
+	tinysolutions_pqe();
 }

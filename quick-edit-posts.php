@@ -4,7 +4,7 @@
  * Plugin Name:       Quick Edit Post
  * Plugin URI:        https://wordpress.org/plugin/quick-edit-post
  * Description:       Quick Edit Post
- * Version:           0.0.1
+ * Version:           0.0.2
  * Author:            Tiny Solutions
  * Author URI:        https://www.wptinysolutions.com/
  * Text Domain:       quick-edit-post
@@ -21,17 +21,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define media edit Constant.
  */
-define( 'PQE_VERSION', '0.0.1' );
+define( 'TSPQE_VERSION', '0.0.2' );
 
-define( 'PQE_FILE', __FILE__ );
+define( 'TSPQE_FILE', __FILE__ );
 
-define( 'PQE_BASENAME', plugin_basename( PQE_FILE ) );
+define( 'TSPQE_BASENAME', plugin_basename( TSPQE_FILE ) );
 
-define( 'PQE_URL', plugins_url( '', PQE_FILE ) );
+define( 'TSPQE_URL', plugins_url( '', TSPQE_FILE ) );
 
-define( 'PQE_ABSPATH', dirname( PQE_FILE ) );
+define( 'TSPQE_ABSPATH', dirname( TSPQE_FILE ) );
 
-define( 'PQE_PATH', plugin_dir_path( __FILE__ ) );
+define( 'TSPQE_PATH', plugin_dir_path( __FILE__ ) );
 
 /**
  * App Init.

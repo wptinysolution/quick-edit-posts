@@ -83,11 +83,11 @@ class Api {
 
 		$parameters = $request_data->get_params();
 
-		$the_settings = get_option( 'pqe_settings', [] );
+		$the_settings = get_option( 'tinysolutions_pqe_settings', [] );
 
 		$the_settings['selected_post_types'] = ! empty( $parameters['selected_post_types'] ) ? $parameters['selected_post_types'] : [];
 
-		$options = update_option( 'pqe_settings', $the_settings );
+		$options = update_option( 'tinysolutions_pqe_settings', $the_settings );
 
 		$result['updated'] = boolval( $options );
 

@@ -9,7 +9,6 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'TinySolutions\\pqe\\Controllers\\Admin\\AdminMenu' => $baseDir . '/TinyApp/Controllers/Admin/AdminMenu.php',
     'TinySolutions\\pqe\\Controllers\\Admin\\Api' => $baseDir . '/TinyApp/Controllers/Admin/Api.php',
-    'TinySolutions\\pqe\\Controllers\\Admin\\Review' => $baseDir . '/TinyApp/Controllers/Admin/Review.php',
     'TinySolutions\\pqe\\Controllers\\AssetsController' => $baseDir . '/TinyApp/Controllers/AssetsController.php',
     'TinySolutions\\pqe\\Controllers\\Dependencies' => $baseDir . '/TinyApp/Controllers/Dependencies.php',
     'TinySolutions\\pqe\\Controllers\\Hooks\\ActionHooks' => $baseDir . '/TinyApp/Controllers/Hooks/ActionHooks.php',

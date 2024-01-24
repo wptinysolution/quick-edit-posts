@@ -27,8 +27,8 @@ class Fns {
 	 * @return bool
 	 */
 	public static function verify_nonce() {
-		$nonce = isset( $_REQUEST[ pqe()->nonceId ] ) ? sanitize_text_field( wp_unslash( $_REQUEST[ pqe()->nonceId ] ) ) : null;
-		if ( wp_verify_nonce( $nonce, pqe()->nonceId ) ) {
+		$nonce = sanitize_text_field( wp_unslash( $_REQUEST[ tinysolutions_pqe()->nonceId ] ?? '' ) );
+		if ( wp_verify_nonce( $nonce, tinysolutions_pqe()->nonceId ) ) {
 			return true;
 		}
 
@@ -54,12 +54,12 @@ class Fns {
 	 * @return array
 	 */
 	public static function get_options() {
-		$cache_key = 'pqe_get_options';
+		$cache_key = 'tinysolutions_pqe_get_options';
 		if ( isset( self::$cache[ $cache_key ] ) ) {
 			return self::$cache[ $cache_key ];
 		}
 		$defaults                  = [];
-		$options                   = get_option( 'pqe_settings' );
+		$options                   = get_option( 'tinysolutions_pqe_settings' );
 		$potions                   = wp_parse_args( $options, $defaults );
 		self::$cache[ $cache_key ] = $potions;
 		return $potions;
@@ -98,7 +98,7 @@ class Fns {
 			];
 			$post_type_array[] = $posts_item;
 		}
-		return apply_filters( 'pqe_get_post_types', $post_type_array );
+		return apply_filters( 'tinysolutions_pqe_settings', $post_type_array );
 	}
 	/**
 	 * Get Options.

@@ -1,4 +1,4 @@
-# Wp Plugin Boilerplate React Js With Mix And Composer Autoload Php
+# Wp Plugin React Js With Mix And Composer Autoload Php
 
 ***Composer Command***
 
@@ -15,12 +15,4 @@
 * Using antd, axios, toastr. You can add or remove if you need
 * Use dispatch for update state value  
 
-```
-dispatch({
-    type: Types.GENERAL_DATA,
-    generalData:{
-        ...stateValue.generalData,
-        selectedMenu : key
-    }
-});
-```
+
