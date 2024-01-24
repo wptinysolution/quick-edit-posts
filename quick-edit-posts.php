@@ -2,7 +2,7 @@
 /**
  * @wordpress-plugin
  * Plugin Name:       Quick Edit Post
- * Plugin URI:        https://wordpress.org/plugin/quick-edit-post
+ * Plugin URI:        https://wordpress.org/plugin/quick-edit-posts
  * Description:       Quick Edit Post
  * Version:           0.0.2
  * Author:            Tiny Solutions
