@@ -50,7 +50,9 @@ class FilterHooks {
 		if ( $post instanceof \WP_Post && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ?? '' ) ), 'update-post_' . $post->ID ) ) {
 			 return $link;
 		}
-
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			return $link;
+		}
 		$is_product = ! empty( $_POST['_wp_http_referer'] ) && 'product' === sanitize_text_field( wp_unslash( $_POST['post_type'] ?? '' ) );
 		if ( ! $is_product ) {
 			return $link;
