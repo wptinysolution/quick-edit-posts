@@ -28,3 +28,11 @@ To Integrate quick edit following below step:
 * At first add quick edit column for a post by selecting check box.
 
 * After adding you will find a column at post list table.
+
+
+ == Changelog ==
+
+ = 0.0.3 ( February 13, 2024 ) =
+ * Incorrect Stable Tag
+ * GPL-compatible license declared
+ * Nonces and User Permissions Needed for Security
