@@ -43,11 +43,14 @@ class FilterHooks {
 	 * Redirect after edit
 	 *
 	 * @param string $link url.
-	 * @return mixed|string
+	 * @return string
 	 */
 	public static function redirect_after_edit_product( $link ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		global $post;
+		if ( $post instanceof \WP_Post && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ?? '' ) ), 'update-post_' . $post->ID ) ) {
+			 return $link;
+		}
+
 		$is_product = ! empty( $_POST['_wp_http_referer'] ) && 'product' === sanitize_text_field( wp_unslash( $_POST['post_type'] ?? '' ) );
 		if ( ! $is_product ) {
 			return $link;
@@ -117,6 +120,5 @@ class FilterHooks {
 		//	//}
 		//	return $links;
 		//}
-	 **/
-	
+	 */
 }

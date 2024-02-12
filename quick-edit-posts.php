@@ -4,12 +4,13 @@
  * Plugin Name:       Quick Edit Post
  * Plugin URI:        https://wordpress.org/plugin/quick-edit-posts
  * Description:       Quick Edit Post
- * Version:           0.0.2
+ * Version:           0.0.3
  * Author:            Tiny Solutions
  * Author URI:        https://www.wptinysolutions.com/
  * Text Domain:       quick-edit-post
  * Domain Path:       /languages
- *
+ * License: GPLv3
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * @package TinySolutions\PQE
  */
 
@@ -21,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define media edit Constant.
  */
-define( 'TSPQE_VERSION', '0.0.2' );
+define( 'TSPQE_VERSION', '0.0.3' );
 
 define( 'TSPQE_FILE', __FILE__ );
 
