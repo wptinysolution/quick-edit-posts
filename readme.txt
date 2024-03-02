@@ -8,6 +8,7 @@ Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
+Quickly modify any post without having to visit the edit page.
 
 == Description ==
 
@@ -29,6 +30,16 @@ To Integrate quick edit following below step:
 
 * After adding you will find a column at post list table.
 
+
+== Screenshots ==
+01. Settings
+01. Quick Edit Button
+
+
+== Frequently Asked Questions ==
+= Q: Why use this plugin =
+
+Quickly modify any post without having to visit the edit page.
 
  == Changelog ==
 
