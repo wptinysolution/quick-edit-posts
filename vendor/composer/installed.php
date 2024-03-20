@@ -3,7 +3,7 @@
         'name' => 'tinysolutions/cpt-int',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '53adb1de44794a13320b34fabd19da3e883f73dc',
+        'reference' => 'bf3d2730b59d15d69765694ac028db77b831eaa1',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'tinysolutions/cpt-int' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '53adb1de44794a13320b34fabd19da3e883f73dc',
+            'reference' => 'bf3d2730b59d15d69765694ac028db77b831eaa1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

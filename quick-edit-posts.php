@@ -4,9 +4,9 @@
  * Plugin Name:       Quick Edit Post
  * Plugin URI:        https://wordpress.org/plugins/quick-edit-posts
  * Description:       Quick Edit Post
- * Version:           1.0.0
- * Author:            Tiny Solutions
- * Author URI:        https://www.wptinysolutions.com/
+ * Version:           1.0.1
+ * Author:            wpdevit
+ * Author URI:        https://profiles.wordpress.org/wpdevit
  * Text Domain:       quick-edit-post
  * Domain Path:       /languages
  * License: GPLv3
@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define media edit Constant.
  */
-define( 'TSPQE_VERSION', '1.0.0' );
+define( 'TSPQE_VERSION', '1.0.1' );
 
 define( 'TSPQE_FILE', __FILE__ );
 
