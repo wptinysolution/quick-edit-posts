@@ -107,15 +107,15 @@ class Fns {
 	 */
 	public static function free_list() {
 		return [
-			'post',
-			'page',
-			'book',
-			'product',
-			'lp_course',
-			'attachment',
-			'rtsb_builder',
-			'e-landing-page',
-			'elementor_library',
+//			'post',
+//			'page',
+//			'book',
+//			'product',
+//			'lp_course',
+//			'attachment',
+//			'rtsb_builder',
+//			'e-landing-page',
+//			'elementor_library',
 		];
 	}
 }

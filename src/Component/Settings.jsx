@@ -40,7 +40,7 @@ function Settings() {
 
     const is_free = ( value ) => {
         const pro_type = pqeParams.free_list;
-        return pro_type.includes(value);
+        return true;// pro_type.includes(value);
     };
 
     return (

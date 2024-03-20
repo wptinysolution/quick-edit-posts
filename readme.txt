@@ -1,6 +1,6 @@
 === Quick Edit Post===
 Contributors: tinysolution
-Tags: Quick Edit post,
+Tags: Quick Edit post
 Requires at least: 6.0
 Tested up to: 6.4
 Stable tag: 0.0.3
