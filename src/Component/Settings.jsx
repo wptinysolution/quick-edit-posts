@@ -40,7 +40,7 @@ function Settings() {
 
     const is_free = ( value ) => {
         const pro_type = pqeParams.free_list;
-        return true;// pro_type.includes(value);
+        return true;//pro_type.includes(value);
     };
 
     return (
@@ -84,7 +84,7 @@ function Settings() {
                                         >
                                         {
                                             stateValue.generalData.postTypes.map( option => (
-                                                is_free(option.value) &&
+                                               is_free(option.value) &&
                                                 <Col style={ { margin: '5px 0' } } key={option.value} span={24}>
                                                     <Checkbox value={option['value']}>
                                                         {option['label']}
