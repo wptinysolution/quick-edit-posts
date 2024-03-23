@@ -1,4 +1,4 @@
-=== Quick Edit Post===
+=== Quick Edit Post ===
 Contributors: wpdevit
 Tags: Quick Edit post
 Requires at least: 6.0
