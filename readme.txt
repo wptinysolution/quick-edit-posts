@@ -2,7 +2,7 @@
 Contributors: wpdevit
 Tags: Quick Edit post
 Requires at least: 6.0
-Tested up to: 6.5
+Tested up to: 6.6
 Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPLv3
@@ -43,7 +43,7 @@ Quickly modify any post without having to visit the edit page.
 
  == Changelog ==
 
- = 0.0.3 ( February 13, 2024 ) =
+ = 1.0.1 ( February 13, 2024 ) =
  * Incorrect Stable Tag
  * GPL-compatible license declared
  * Nonces and User Permissions Needed for Security
