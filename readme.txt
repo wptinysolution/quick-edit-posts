@@ -3,7 +3,7 @@ Contributors: wpdevit
 Tags: Quick Edit post
 Requires at least: 6.0
 Tested up to: 6.6
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Requires PHP: 7.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -43,7 +43,12 @@ Quickly modify any post without having to visit the edit page.
 
  == Changelog ==
 
+ = 1.0.2 ( June 14, 2024 ) =
+* Add settings Page link
+* Remove un-use code
+* Tested Latest Wordpress
+
  = 1.0.1 ( February 13, 2024 ) =
- * Incorrect Stable Tag
- * GPL-compatible license declared
- * Nonces and User Permissions Needed for Security
+* Incorrect Stable Tag
+* GPL-compatible license declared
+* Nonces and User Permissions Needed for Security

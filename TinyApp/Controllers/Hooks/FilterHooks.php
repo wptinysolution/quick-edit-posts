@@ -26,7 +26,7 @@ class FilterHooks {
 		*/
 		add_filter( 'admin_body_class', [ __CLASS__, 'custom_class' ] );
 		add_action( 'get_edit_post_link', [ __CLASS__, 'redirect_after_edit_product' ], 20 );
-
+		add_filter( 'plugin_action_links_' . TSPQE_BASENAME, [ __CLASS__, 'plugins_setting_links' ] );
 		$options = Fns::get_options();
 		if ( ! empty( $options['selected_post_types'] ) && count( $options['selected_post_types'] ) ) {
 			foreach ( $options['selected_post_types'] as $item ) {
@@ -37,6 +37,16 @@ class FilterHooks {
 				}
 			}
 		}
+	}
+	/**
+	 * @param array $links default plugin action link
+	 *
+	 * @return array [array] plugin action link
+	 */
+	public static function plugins_setting_links( $links ) {
+		$new_links                   = [];
+		$new_links['tspqe_settings'] = '<a href="' . admin_url( 'admin.php?page=pqe-admin' ) . '">' . esc_html__( 'Settings', 'quick-edit-post' ) . '</a>';
+		return array_merge( $new_links, $links );
 	}
 
 	/**
